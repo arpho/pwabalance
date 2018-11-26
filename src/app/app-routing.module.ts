@@ -19,7 +19,11 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule', canActivate: [AuthGuard] },
   { path: 'reset-password', loadChildren: './pages/reset-password/reset-password.module#ResetPasswordPageModule' },
-  { path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule' }
+  { path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule' },
+  { path: 'categorie', loadChildren: './pages/categorie/categorie.module#CategoriePageModule' },
+  { path: 'pagamenti', loadChildren: './pages/pagamenti/pagamenti.module#PagamentiPageModule' },
+  { path: 'fornitori', loadChildren: './pages/fornitori/fornitori.module#FornitoriPageModule' },
+  { path: 'grafici', loadChildren: './pages/grafici/grafici.module#GraficiPageModule' }
 ];
 
 @NgModule({
