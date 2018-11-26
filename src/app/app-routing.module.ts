@@ -10,20 +10,21 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
-  },
+    loadChildren: './home/home.module#HomePageModule',
+     canActivate: [AuthGuard]   },
   {
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
   },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule', canActivate: [AuthGuard] },
-  { path: 'reset-password', loadChildren: './pages/reset-password/reset-password.module#ResetPasswordPageModule' },
-  { path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule' },
-  { path: 'categorie', loadChildren: './pages/categorie/categorie.module#CategoriePageModule' },
-  { path: 'pagamenti', loadChildren: './pages/pagamenti/pagamenti.module#PagamentiPageModule' },
-  { path: 'fornitori', loadChildren: './pages/fornitori/fornitori.module#FornitoriPageModule' },
-  { path: 'grafici', loadChildren: './pages/grafici/grafici.module#GraficiPageModule' }
+  { path: 'reset-password', loadChildren: './pages/reset-password/reset-password.module#ResetPasswordPageModule', 
+  canActivate: [AuthGuard]  },
+  { path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule' , canActivate: [AuthGuard] },
+  { path: 'categorie', loadChildren: './pages/categorie/categorie.module#CategoriePageModule', canActivate: [AuthGuard]  },
+  { path: 'pagamenti', loadChildren: './pages/pagamenti/pagamenti.module#PagamentiPageModule', canActivate: [AuthGuard]  },
+  { path: 'fornitori', loadChildren: './pages/fornitori/fornitori.module#FornitoriPageModule', canActivate: [AuthGuard]  },
+  { path: 'grafici', loadChildren: './pages/grafici/grafici.module#GraficiPageModule', canActivate: [AuthGuard]  }
 ];
 
 @NgModule({

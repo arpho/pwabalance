@@ -23,7 +23,7 @@ export class ListPage implements OnInit {
 
   public items: Array<{ title: string; note: string; icon: string, link: string }> = [];
   constructor() {
-    this.items.push(this.itemFactory('categorie', 'pricetags', 'categtorie'));
+    this.items.push(this.itemFactory('categorie', 'pricetags', 'categorie'));
     this.items.push(this.itemFactory('pagamenti', 'cash', 'pagamenti'));
     this.items.push(this.itemFactory('fornitori', 'people', 'fornitori'));
     this.items.push(this.itemFactory('carrelli della spesa', 'cart', 'home'));
