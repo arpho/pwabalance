@@ -27,7 +27,6 @@ export class LoginPage implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder
   ) {
-    console.log('this is login');
     this.loginForm = this.formBuilder.group({
       email: ['',
         Validators.compose([Validators.required, Validators.email])],
@@ -38,7 +37,6 @@ export class LoginPage implements OnInit {
     });
   }
   onSubmit() {
-    console.log('submit');
   }
 
 

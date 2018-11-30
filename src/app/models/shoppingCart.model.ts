@@ -7,7 +7,7 @@ export interface FirebaseObject {
     serialize();
     load(item: any);
 }
-export class Category implements FirebaseObject {
+export class CategoryModel implements FirebaseObject {
     id: string;
     title: string;
     load(item) {
