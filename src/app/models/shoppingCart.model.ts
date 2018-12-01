@@ -1,17 +1,23 @@
 
 // import { Timestamp } from 'rxjs/Rx';
-import * as _ from 'lodash';
 import { DiscountModel } from './discount.model';
 import { FormGroup } from '@angular/forms/src/model';
+import { CategoriesService } from '../services/categories/categories.service';
 export interface FirebaseObject {
     serialize();
-    load(item: any);
+    load(item: string, service);
 }
 export class CategoryModel implements FirebaseObject {
     id: string;
     title: string;
-    load(item) {
-        this.title = item.title;
+    service: any;
+    constructor() {
+        this.service = new CategoriesService();
+    }
+    load(key, service) {
+        service.getCategory(key).on('value', cat => {
+            this.title = cat.val().title;
+        });
     }
     serialize() {
         return this.id;
@@ -48,7 +54,7 @@ export class ItemModel implements FirebaseObject {
     serialize() {
     }
 
-    load() { }
+    load(key: string) { }
     build(item: any/* {prezzo:number,
                  barcode:string,
                 descrizione:string,
@@ -100,8 +106,7 @@ export class ShoppingCartModel {
             this.items = shoppingCart.items || [];
             this.key = shoppingCart.key || '';
             this.note = shoppingCart.note || '';
-        }
-        else {
+        } else {
             this.fornitoreId = '';
             this.pagamentoId = '';
             this.sconto = new DiscountModel();
@@ -127,7 +132,7 @@ export class ShoppingCartModel {
         this.key = item.key;
         this.moneta = item.moneta;
         this.online = item.online;
-        return this
+        return this;
     }
 
     generateItemId() {
@@ -135,25 +140,25 @@ export class ShoppingCartModel {
         genera un ItemId univoco
         @return itemId:string
         */
-        return String(new Date().getTime())
+        return String(new Date().getTime());
     }
     pushItem(item: ItemModel) {
-        //item.id = String(new Date().getTime())// setto lo id dello item
-        //this.items =
-        this.items.push(item)
-        this.items = _.cloneDeep(this.items) //fa scattare il changedetection
+        // item.id = String(new Date().getTime())// setto lo id dello item
+        // this.items =
+        this.items.push(item);
+        this.items = _.cloneDeep(this.items); // fa scattare il changedetection
 
     }
 
     updateItem(item) {
         this.items = _.map(this.items, article => {
-            return article.id == item.id ? item : article
+            return article.id === item.id ? item : article;
 
-        })
+        });
     }
 
     removeItem(item: ItemModel) {
-        this.items = this.items.filter(article => article.id != item.id)
+        this.items = this.items.filter(article => article.id !== item.id);
     }
 
     build(shoppingCart: {
@@ -167,15 +172,15 @@ export class ShoppingCartModel {
         items: [ItemModel],
         note?: string
     }) {
-        this.fornitoreId = shoppingCart.fornitoreId || "";
-        this.pagamentoId = shoppingCart.pagamentoId || "";
+        this.fornitoreId = shoppingCart.fornitoreId || '';
+        this.pagamentoId = shoppingCart.pagamentoId || '';
         this.dataAcquisto = shoppingCart.dataAcquisto || new Date().toISOString();
         this.dataAddebito = shoppingCart.dataAddebito || new Date().toISOString();
         this.totale = shoppingCart.totale || 0;
         this.online = shoppingCart.online || false;
         this.items = shoppingCart.items || [];
-        this.key = shoppingCart.key || "";
-        this.note = shoppingCart.note || "note";
+        this.key = shoppingCart.key || '';
+        this.note = shoppingCart.note || 'note';
         return this;
     }
 }

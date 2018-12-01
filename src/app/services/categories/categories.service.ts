@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import { CategoryModel } from '../../models/shoppingCart.model';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +12,8 @@ export class CategoriesService {
 
   constructor() {
     firebase.auth().onAuthStateChanged(user => {
-      console.log('user',user.uid, firebase);
-      firebase.database().ref(`categorie/${user.uid}`);
       if (user) {
-        this.categoriesListRef = firebase
-          .database()
-          .ref(`/categorie/${user.uid}/`);
+        this.categoriesListRef = firebase.database().ref(`/categorie/${user.uid}/`);
       }
     });
   }
@@ -49,7 +45,7 @@ export class CategoriesService {
     return this.eventListRef.child(eventId);
   }
 
-  getPr(prId: string): firebase.database.Reference {
+  getCategory(prId: string): firebase.database.Reference {
     return this.categoriesListRef.child(prId);
   }
 

@@ -13,8 +13,18 @@ export class CategoriePage implements OnInit {
   constructor(public categories: CategoriesService) { }
 
   ngOnInit() {
-  }
+    this.categories.getCategoriesList().on('value', eventCategoriesListSnapshot => {
+      this.CategoriesList = [];
+      eventCategoriesListSnapshot.forEach(snap => {
+        // this.CategoriesList.push
+        const category = new CategoryModel();
+        category.load(snap.key,this.categories);
+        this.CategoriesList.push(category);
+      });
+  });
+}
   ionViewDidLoad() {
+    console.log('loading categories')
     this.categories.getCategoriesList().on('value', eventCategoriesListSnapshot => {
       this.CategoriesList = [];
       eventCategoriesListSnapshot.forEach(snap => {
