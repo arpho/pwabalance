@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
-import { CategoryModel } from '../../models/shoppingCart.model';
+import { CategoryModel } from '../../models/CategoryModel';
 
 
 @Injectable({

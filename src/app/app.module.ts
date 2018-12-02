@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {ItemModule } from '../app/modules/item/item.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    ItemModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],

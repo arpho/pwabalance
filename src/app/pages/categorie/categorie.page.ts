@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../../services/categories/categories.service';
-import { CategoryModel } from 'src/app/models/shoppingCart.model';
+import { CategoryModel } from 'src/app/models/CategoryModel';
 
 @Component({
   selector: 'app-categorie',
@@ -18,13 +18,13 @@ export class CategoriePage implements OnInit {
       eventCategoriesListSnapshot.forEach(snap => {
         // this.CategoriesList.push
         const category = new CategoryModel();
-        category.load(snap.key,this.categories);
+        category.load(snap.key, this.categories);
         this.CategoriesList.push(category);
       });
-  });
-}
+    });
+  }
   ionViewDidLoad() {
-    console.log('loading categories')
+    console.log('loading categories');
     this.categories.getCategoriesList().on('value', eventCategoriesListSnapshot => {
       this.CategoriesList = [];
       eventCategoriesListSnapshot.forEach(snap => {
