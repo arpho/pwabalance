@@ -13,12 +13,13 @@ export class ItemsListComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.items_list);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
     this.items_list = changes.items_list.currentValue;
+    if (this.items_list) {
+    }
 
   }
 

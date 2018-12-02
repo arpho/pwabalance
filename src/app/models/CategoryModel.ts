@@ -22,10 +22,6 @@ export class CategoryModel implements FirebaseObject, ItemInterface {
         return value;
     }
 
-    getFilterParams() {
-        const out = [{ label: 'filtri', key: 'string', values: [0] }];
-        return out ;
-    }
 
 getValue1() {
     const value = new Value();
