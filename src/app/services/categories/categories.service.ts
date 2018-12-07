@@ -49,8 +49,8 @@ export class CategoriesService {
     return this.categoriesListRef.child(prId);
   }
 
-  updatePr(category: CategoryModel) {
-    return this.categoriesListRef.child(category.id).update(category);
+  updateCategory(category: CategoryModel) {
+    return this.categoriesListRef.child(category.key).update(category);
   }
 
 }

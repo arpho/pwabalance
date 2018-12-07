@@ -4,7 +4,7 @@ import { FirebaseObject } from './firebaseObject';
 import { ItemInterface } from '../modules/item/models/itemInterface';
 import { Value } from '../modules/item/models/value';
 export class CategoryModel implements FirebaseObject, ItemInterface {
-    id: string;
+    key: string;
     title: string;
     service: any;
     constructor() {
@@ -12,6 +12,7 @@ export class CategoryModel implements FirebaseObject, ItemInterface {
     load(key, service) {
         service.getCategory(key).on('value', cat => {
             this.title = cat.val().title;
+            this.key = key;
         });
     }
 

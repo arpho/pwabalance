@@ -2,13 +2,15 @@
 <ion-list>
   <ion-item-sliding *ngFor="let item of items_list" #sliding_item>
 
-    <my-item [Item]="item"></my-item>
+    <my-item [Item]="item" (click)="do(item)"></my-item>
 
-    <ion-item-options >
-        <button ion-button danger class='danger' (click)="delete(pr)">
-          <ion-icon name="trash"></ion-icon>
-          Delete
-        </button>
-      </ion-item-options>
-  </ion-item-sliding>
+    <ion-item-options side="start" >
+      <button ion-button danger class='danger' (click)="delete(pr)">
+        <ion-icon name="trash"></ion-icon>
+        Elimina
+      </button>
+    </ion-item-options>
+
+</ion-item-sliding>
+
 </ion-list>

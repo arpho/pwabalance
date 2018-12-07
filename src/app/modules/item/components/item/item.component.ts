@@ -13,14 +13,6 @@ export class ItemComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
   }
-  async do() {
-    const alert = this.alertCtrl.create({
-      title: 'Low battery',
-      subTitle: '10% of battery remaining',
-      buttons: ['Dismiss']
-    });
-   await alert.present();
-  }
 
   ngOnInit() {
   }

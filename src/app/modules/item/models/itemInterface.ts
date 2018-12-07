@@ -1,6 +1,7 @@
 import {Value} from './value';
 
 export interface ItemInterface {
+    title: string;
     getValue0(): Value;
     getValue1(): Value;
     getValue2(): Value;
