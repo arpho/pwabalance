@@ -42,8 +42,7 @@ export class CategoryModel implements FirebaseObject, ItemInterface {
                     text: 'Salva',
                     handler: data => {
                         item.title = data.title;
-                        service.updateItem(item.serialize()).then(v => { console.log('updated', v); });
-                        console.log(item);
+                        service.updateItem(item);
                     },
                 },
             ],
