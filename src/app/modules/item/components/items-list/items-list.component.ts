@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ItemInterface } from '../../models/itemInterface';
 import { AlertController } from '@ionic/angular';
+import { ItemServiceInterface } from '../../models/ItemServiceInterface';
 
 @Component({
   selector: 'my-items-list',
@@ -9,6 +10,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class ItemsListComponent implements OnInit, OnChanges {
   @Input() items_list: ItemInterface[];
+  @Input() service: ItemServiceInterface;
 
 
   constructor(public alertCtrl: AlertController) { }
@@ -26,30 +28,10 @@ export class ItemsListComponent implements OnInit, OnChanges {
 
 
   async do(item: ItemInterface) {
-    console.log(item)
 
-    const alert = await this.alertCtrl.create({
-      subHeader: 'modifica categoria',
-      inputs: [
-        {
-          type: 'text',
-          name: 'title',
-          placeholder: 'categoria',
-          value: item.title,
-        },
-      ],
-      buttons: [
-        { text: 'Annulla' },
-        {
-          text: 'Salva',
-          handler: data => {
-            console.log('chiouso', data)
-            item.title = data.title;
-            console.log(item)
-          },
-        },
-      ],
-    });
+    console.log(item.serialize());
+    const popup = item.getPopup(item, this.service);
+    const alert = await this.alertCtrl.create(popup);
     await alert.present();
   }
 

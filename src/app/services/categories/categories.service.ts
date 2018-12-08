@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import { CategoryModel } from '../../models/CategoryModel';
+import { ItemServiceInterface } from '../../modules/item/models/ItemServiceInterface';
+import { ItemInterface } from 'src/app/modules/item/models/itemInterface';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriesService {
+export class CategoriesService implements ItemServiceInterface {
   public categoriesListRef: firebase.database.Reference;
   public eventListRef: firebase.database.Reference;
 
@@ -45,12 +47,15 @@ export class CategoriesService {
     return this.eventListRef.child(eventId);
   }
 
-  getCategory(prId: string): firebase.database.Reference {
+  getItem(prId: string): firebase.database.Reference {
     return this.categoriesListRef.child(prId);
   }
 
-  updateCategory(category: CategoryModel) {
-    return this.categoriesListRef.child(category.key).update(category);
+  updateItem(item: ItemInterface) {
+    return this.categoriesListRef.child(item.key).update(item.serialize());
+  }
+  deleteItem(key: string) {
+    return this.categoriesListRef.child(key).remove();
   }
 
 }
