@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import { CategoryModel } from '../../models/CategoryModel';
 import { ItemServiceInterface } from '../../modules/item/models/ItemServiceInterface';
-import { ItemInterface } from 'src/app/modules/item/models/itemInterface';
+import { ItemModelInterface } from 'src/app/modules/item/models/itemModelInterface';
 
 
 @Injectable({
@@ -51,7 +51,7 @@ export class CategoriesService implements ItemServiceInterface {
     return this.categoriesListRef.child(prId);
   }
 
-  updateItem(item: ItemInterface) {
+  updateItem(item: ItemModelInterface) {
     return this.categoriesListRef.child(item.key).update(item.serialize());
   }
   deleteItem(key: string) {

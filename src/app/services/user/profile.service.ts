@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ComponentFactoryResolver } from '@angular/core';
 import * as firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/database';
@@ -29,6 +29,7 @@ export class ProfileService {
   }
 
   updateDOB(birthDate: string): Promise<any> {
+    console.log('updating dob',birthDate)
     return this.userProfile.update({ birthDate });
   }
 
@@ -60,7 +61,7 @@ export class ProfileService {
       .reauthenticateAndRetrieveDataWithCredential(credential)
       .then(() => {
         this.currentUser.updatePassword(newPassword).then(() => {
-          38
+          
           console.log('Password Changed');
         });
       })

@@ -1,10 +1,10 @@
 
 
 import { FirebaseObject } from './firebaseObject';
-import { ItemInterface } from '../modules/item/models/itemInterface';
+import { ItemModelInterface } from '../modules/item/models/itemModelInterface';
 import { Value } from '../modules/item/models/value';
 import { ItemServiceInterface } from '../modules/item/models/ItemServiceInterface';
-export class CategoryModel implements FirebaseObject, ItemInterface {
+export class CategoryModel implements FirebaseObject, ItemModelInterface {
     key: string;
     title: string;
     service: any;
@@ -24,7 +24,7 @@ export class CategoryModel implements FirebaseObject, ItemInterface {
         return value;
     }
 
-    getPopup(item: ItemInterface, service: ItemServiceInterface) {
+    getPopup(item: ItemModelInterface, service: ItemServiceInterface) {
 
         return {
             subHeader: 'modifica categoria',

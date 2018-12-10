@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
-import { ItemInterface } from '../../models/itemInterface';
+import { ItemModelInterface } from '../../models/itemModelInterface';
 import { AlertController } from '@ionic/angular';
 import { ItemServiceInterface } from '../../models/ItemServiceInterface';
 
@@ -10,7 +10,7 @@ import { ItemServiceInterface } from '../../models/ItemServiceInterface';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemsListComponent implements OnInit, OnChanges {
-  @Input() items_list: ItemInterface[];
+  @Input() items_list: ItemModelInterface[];
   @Input() service: ItemServiceInterface;
 
 
@@ -27,7 +27,7 @@ export class ItemsListComponent implements OnInit, OnChanges {
   }
 
 
-  async do(item: ItemInterface) {
+  async do(item: ItemModelInterface) {
 
     const popup = item.getPopup(item, this.service);
     const alert = await this.alertCtrl.create(popup);

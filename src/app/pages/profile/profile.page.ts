@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
+
+
+
+
 export class ProfilePage implements OnInit {
   public userProfile: any;
   public birthDate: string;
@@ -22,9 +26,9 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     this.profileService.getUserProfile().on('value', userProfileSnapshot => {
       this.userProfile = userProfileSnapshot.val();
+      console.log(this.userProfile);
       console.log(userProfileSnapshot.val().birthDate);
       this.birthDate = new Date(userProfileSnapshot.val().birthDate).toISOString();
-      console.log(this.birthDate);
     });
   }
 
@@ -64,26 +68,34 @@ export class ProfilePage implements OnInit {
     await alert.present();
   }
 
-  updateDOB(birthDate: any): void {
-    console.log(birthDate);
-    if (birthDate === undefined) {
-      return;
-    } else if (
-      birthDate.year === undefined ||
-      birthDate.month === undefined ||
-      birthDate.day === undefined
-    ) {
-      return;
-    }
-    const dateOfBirth: Date = new Date(
-      birthDate.year.value,
-      birthDate.month.value - 1,
-      birthDate.day.value
-    );
-    console.log(dateOfBirth);
-    this.profileService.updateDOB(String(dateOfBirth));
+extract_date_from_data(d){
+  return d.split('T')[0].split('-');
+}
+changedDate(d)
+{
+  console.log(d)
+}
 
+updateDOB(birthDate: any): void {
+  console.log(birthDate);
+  if (birthDate === undefined) {
+    return;
+  } else if (
+    birthDate.year === undefined ||
+    birthDate.month === undefined ||
+    birthDate.day === undefined
+  ) {
+    return;
   }
+  const dateOfBirth: Date = new Date(
+    birthDate.year.value,
+    birthDate.month.value - 1,
+    birthDate.day.value
+  );
+  console.log(dateOfBirth);
+  this.profileService.updateDOB(String(dateOfBirth));
+
+}
 
   async updateEmail(): Promise<void> {
     const alert = await this.alertCtrl.create({

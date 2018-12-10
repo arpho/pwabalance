@@ -1,10 +1,10 @@
 
 import * as firebase from 'firebase';
-import { ItemInterface } from './itemInterface';
+import { ItemModelInterface } from './itemModelInterface';
 export interface ItemServiceInterface {
 
 
     getItem(key: string): firebase.database.Reference;
-    updateItem(item: ItemInterface);
+    updateItem(item: ItemModelInterface);
     deleteItem(key: string);
 }

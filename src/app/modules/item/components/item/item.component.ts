@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { ItemInterface } from '../../models/itemInterface';
+import { ItemModelInterface } from '../../models/itemModelInterface';
 
 @Component({
   selector: 'my-item',
@@ -8,7 +8,7 @@ import { ItemInterface } from '../../models/itemInterface';
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit, OnChanges {
-  @Input() Item: ItemInterface;
+  @Input() Item: ItemModelInterface;
   constructor(private alertCtrl: AlertController) { }
 
   ngOnChanges(changes: SimpleChanges) {
