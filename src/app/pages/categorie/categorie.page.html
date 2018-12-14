@@ -5,6 +5,6 @@
 </ion-header>
 
 <ion-content padding>
-  <my-items-list [items_list]="CategoriesList"[service]="categories"></my-items-list>
-  
+  <app-field-filter [label]="filterLabel"></app-field-filter>
+  <my-items-list [items_list]="CategoriesList"[service]="categories"[dummyItem]="dummyItem"></my-items-list>
 </ion-content>

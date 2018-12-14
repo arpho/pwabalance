@@ -16,3 +16,10 @@ ion-list-header {
     
     max-width: 50% !important;
     }
+    .applyFilter {
+        color: red;
+        position: fixed; 
+        float: right;
+        transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    }

@@ -4,6 +4,8 @@ import { FirebaseObject } from './firebaseObject';
 import { ItemModelInterface } from '../modules/item/models/itemModelInterface';
 import { Value } from '../modules/item/models/value';
 import { ItemServiceInterface } from '../modules/item/models/ItemServiceInterface';
+import { ItemFilterOPtions } from '../modules/item/models/ItemFIlterOptions';
+import { Item } from '@ionic/angular';
 export class CategoryModel implements FirebaseObject, ItemModelInterface {
     key: string;
     title: string;
@@ -15,6 +17,12 @@ export class CategoryModel implements FirebaseObject, ItemModelInterface {
             this.title = cat.val().title;
             this.key = key;
         });
+    }
+
+    getFilterParams() {
+        const out: ItemFilterOPtions = new ItemFilterOPtions('categoria', 'text');
+        
+        return [out];
     }
 
     getValue0() {
@@ -43,6 +51,34 @@ export class CategoryModel implements FirebaseObject, ItemModelInterface {
                     handler: data => {
                         item.title = data.title;
                         service.updateItem(item);
+                    },
+                },
+            ],
+        };
+    }
+
+    getFilterPopup(next) {
+
+        return {
+            subHeader: 'modifica categoria',
+            inputs: [
+                {
+                    type: 'text',
+                    name: 'title',
+                    placeholder: 'cerca categoria',
+                    value: 'test filter',
+                },
+            ],
+            buttons: [
+                { text: 'Annulla' },
+                {
+                    text: 'Salva',
+                    handler: data => {
+                        console.log('popup');
+                        const filterFunction = (item: ItemModelInterface) => {
+                            return this.title.toLowerCase().indexOf(data[0]) > -1;
+                        };
+                        next(filterFunction);
                     },
                 },
             ],

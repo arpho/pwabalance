@@ -1,6 +1,7 @@
 import { Value } from './value';
 import { ItemServiceInterface } from './ItemServiceInterface';
 import { AlertOptions } from '@ionic/core';
+import { ItemFilterOPtions } from './ItemFIlterOptions';
 
 export interface ItemModelInterface {
     title: string;
@@ -11,9 +12,10 @@ export interface ItemModelInterface {
     getValue3(): Value;
     getValue4(): Value;
     getPopup(item: ItemModelInterface, service: ItemServiceInterface): any;
-    getAggregate(): Value; /*ritorna l'etichetta e il valore da visualizzare del campo aggregato */
+    getFilterPopup(next: (any) => any);
+        getAggregate(): Value; /*ritorna l'etichetta e il valore da visualizzare del campo aggregato */
     aggregateAction(): any | void;
     showDetail(): any | void;
     serialize();
-    // getFilterParams(): [{ label: string, key: string, values?: [any] }];
+    getFilterParams(): ItemFilterOPtions[];
 }

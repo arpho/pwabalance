@@ -10,17 +10,23 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import {ItemModule } from '../app/modules/item/item.module';
+import { ItemModule } from '../app/modules/item/item.module';
+import { FieldFilterComponent } from './components/field-filter/field-filter.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, ],
+  declarations:
+    [
+      AppComponent,
+    ],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     ItemModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ReactiveFormsModule
   ],
   providers: [
     StatusBar,
@@ -29,4 +35,4 @@ import {ItemModule } from '../app/modules/item/item.module';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
