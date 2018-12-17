@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CategoriesService } from '../../services/categories/categories.service';
 import { CategoryModel } from 'src/app/models/CategoryModel';
 import { ItemModelInterface } from 'src/app/modules/item/models/itemModelInterface';
@@ -8,12 +8,17 @@ import { ItemModelInterface } from 'src/app/modules/item/models/itemModelInterfa
   templateUrl: './categorie.page.html',
   styleUrls: ['./categorie.page.scss'],
 })
-export class CategoriePage implements OnInit {
+export class CategoriePage implements OnInit, OnChanges {
   public CategoriesList: Array<CategoryModel>;
   public dummyItem: ItemModelInterface;
   public filterLabel: String = 'Categorie';
+  public filterString: string;
 
   constructor(public categories: CategoriesService) { }
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+  }
+  search(v){console.log(v);}
 
   ngOnInit() {
     this.categories.getCategoriesList().on('value', eventCategoriesListSnapshot => {

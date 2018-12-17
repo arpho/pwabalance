@@ -5,6 +5,6 @@
 </ion-header>
 
 <ion-content padding>
-  <app-field-filter [label]="filterLabel"></app-field-filter>
+  <app-item-field-filter [label]="filterLabel" (doFilter)="search($event)"></app-item-field-filter>
   <my-items-list [items_list]="CategoriesList"[service]="categories"[dummyItem]="dummyItem"></my-items-list>
 </ion-content>

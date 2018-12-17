@@ -1,0 +1,16 @@
+<label>
+  {{label}}:
+  <input type="text" [formControl]="field">
+</label>
+
+
+<ion-icon name="search">
+  <ion-input type="text"
+          id="filterField"
+          [formControl] = "filterForm.get('field')"
+          placeholder={{placeholder}}
+          >
+  </ion-input></ion-icon>
+<p>
+  {{field?.value}}
+</p>

@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./field-filter.component.scss']
 })
 export class FieldFilterComponent implements OnInit {
-  field = new FormControl('').registerOnChange((v) => { console.log(v); });
+  public field = new FormControl('').registerOnChange((v) => { console.log(v); });
   @Input() label: string;
 
   constructor() {
