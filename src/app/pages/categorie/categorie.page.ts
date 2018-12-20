@@ -18,7 +18,11 @@ export class CategoriePage implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
   }
-  search(v){console.log(v);}
+
+  searchFunctionFactory(v) {
+    const out = (item: ItemModelInterface) => item.title.toLowerCase().indexOf(v.data) !== -1;
+    console.log(v);
+  }
 
   ngOnInit() {
     this.categories.getCategoriesList().on('value', eventCategoriesListSnapshot => {

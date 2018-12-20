@@ -31,7 +31,8 @@ export class ItemFieldFilterComponent {
       (value: string) => {
         console.log('stringa di ricerca', value);
         this.doFilter.emit({ data: value });
-      }
+      });
 
-  
+
+  }
 }
