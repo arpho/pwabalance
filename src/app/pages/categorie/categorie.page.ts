@@ -13,15 +13,17 @@ export class CategoriePage implements OnInit, OnChanges {
   public dummyItem: ItemModelInterface;
   public filterLabel: String = 'Categorie';
   public filterString: string;
+  public filterFunction: (item: ItemModelInterface) => Boolean;
 
   constructor(public categories: CategoriesService) { }
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
   }
 
-  searchFunctionFactory(v) {
+  searchFunctionFactory(v): (item: ItemModelInterface) => Boolean {
     const out = (item: ItemModelInterface) => item.title.toLowerCase().indexOf(v.data) !== -1;
     console.log(v);
+    return out;
   }
 
   ngOnInit() {

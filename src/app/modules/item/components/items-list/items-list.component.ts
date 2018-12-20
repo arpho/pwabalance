@@ -13,7 +13,7 @@ export class ItemsListComponent implements OnInit, OnChanges {
   @Input() items_list: ItemModelInterface[];
   @Input() service: ItemServiceInterface;
   @Input() dummyItem: ItemModelInterface;
-  filterFunction: (item: ItemModelInterface) => boolean;
+  @Input() filterFunction: (item: ItemModelInterface) => boolean;
 
 
   constructor(public alertCtrl: AlertController) { }
@@ -59,8 +59,11 @@ export class ItemsListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.items_list = changes.items_list.currentValue;
-    if (this.items_list) {
+    if (changes.items_list) {
+      this.items_list = changes.items_list.currentValue;
+    }
+    if (changes.filterFunction) {
+      this.filterFunction = changes.filterFunction.currentValue;
     }
 
   }
