@@ -1,6 +1,7 @@
 
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl, FormBuilder, AbstractControl } from '@angular/forms';
+import { Refresher } from '@ionic/angular';
 
 
 @Component({
@@ -21,12 +22,9 @@ export class ItemFieldFilterComponent {
     this.field = new FormControl('');
     this.filterForm = fb.group({
       'field': [this.label, Validators.required]
-    })
-    this.field = this.filterForm.controls['field']
+    });
+    this.field = this.filterForm.controls['field'];
     this.doFilter = new EventEmitter<string>();
-
-
-    // console.log('valueChange',this.field.valueChanges);
     this.field.valueChanges.subscribe(
       (value: string) => {
         console.log('stringa di ricerca', value);
@@ -34,5 +32,10 @@ export class ItemFieldFilterComponent {
       });
 
 
+  }
+
+
+  refresh() {
+    this.filterForm.controls.field.setValue('');
   }
 }

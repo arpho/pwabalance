@@ -4,7 +4,7 @@
 </label>
 
 
-<ion-icon name="search">
+<ion-icon name="refresh"(click)="refresh()">
   <ion-input type="text"
           id="filterField"
           [formControl] = "filterForm.get('field')"
