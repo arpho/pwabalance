@@ -6,9 +6,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { CategoriePage } from './categorie.page';
-import {ItemModule} from '../../modules/item/item.module';
-import {FieldFilterComponent} from '../../components/field-filter/field-filter.component';
-import {ItemFieldFilterComponent} from '../../modules/item/components/item-field-filter/item-field-filter.component';
+import { ItemModule } from '../../modules/item/item.module';
+import { FieldFilterComponent } from '../../components/field-filter/field-filter.component';
+import { ItemFieldFilterComponent } from '../../modules/item/components/item-field-filter/item-field-filter.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
@@ -20,6 +20,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+
     ReactiveFormsModule,
     ItemModule,
     CommonModule,
@@ -27,7 +28,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CategoriePage,ItemFieldFilterComponent,
+  declarations: [CategoriePage, ItemFieldFilterComponent, 
     FieldFilterComponent]
 })
-export class CategoriePageModule {}
+export class CategoriePageModule { }

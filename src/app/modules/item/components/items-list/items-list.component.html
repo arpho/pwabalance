@@ -1,7 +1,7 @@
 <p class="counter">{{items_list?.length}}</p>
 <ion-icon name="search" class="applyFi1lter" (click)="showFilter()"></ion-icon>
 <ion-list>
-  <ion-item-sliding *ngFor="let item of items_list" #sliding_item>
+  <ion-item-sliding *ngFor="let item of (items_list|filterItems:filterFunction)" #sliding_item>
 
     <my-item [Item]="item" (click)="do(item)"></my-item>
 
