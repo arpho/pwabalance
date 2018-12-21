@@ -19,6 +19,7 @@ export class ItemsListComponent implements OnInit, OnChanges {
   constructor(public alertCtrl: AlertController) { }
 
   ngOnInit() {
+    this.filterFunction = (v: ItemModelInterface) => true;
   }
   async showFilter() {
     console.log('filtering');
@@ -68,6 +69,9 @@ export class ItemsListComponent implements OnInit, OnChanges {
 
   }
 
+  countItems() {
+    return this.items_list.filter(this.filterFunction).length;
+  }
 
   async do(item: ItemModelInterface) {
 
