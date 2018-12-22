@@ -21,7 +21,7 @@ export class CategoriePage implements OnInit, OnChanges {
   }
 
   searchFunctionFactory(v): (item: ItemModelInterface) => Boolean {
-    const out = (item: ItemModelInterface) => item.title.toLowerCase().indexOf(v.data) !== -1;
+    const out = (item: ItemModelInterface) => item.title.toLowerCase().indexOf(v.data.toLowerCase()) !== -1;
     console.log(v);
     return out;
   }
