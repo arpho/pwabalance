@@ -6,7 +6,7 @@
     <my-item [Item]="item" (click)="do(item)"></my-item>
 
     <ion-item-options side="start" >
-      <button ion-button danger class='danger' (click)="delete(pr)">
+      <button ion-button danger class='danger' (click)="deleteItem(item)">
         <ion-icon name="trash"></ion-icon>
         Elimina
       </button>

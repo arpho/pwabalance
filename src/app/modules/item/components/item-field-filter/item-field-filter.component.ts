@@ -27,7 +27,6 @@ export class ItemFieldFilterComponent {
     this.doFilter = new EventEmitter<string>();
     this.field.valueChanges.subscribe(
       (value: string) => {
-        console.log('stringa di ricerca', value);
         this.doFilter.emit({ data: value });
       });
 

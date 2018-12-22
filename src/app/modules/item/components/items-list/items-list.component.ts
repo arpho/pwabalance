@@ -21,6 +21,31 @@ export class ItemsListComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.filterFunction = (v: ItemModelInterface) => true;
   }
+
+
+  async deleteItem(item: ItemModelInterface) {
+    console.log('deleting', item);
+    const alert = await this.alertCtrl.create({
+      message: 'vuoi cancellare questo elemento?',
+      buttons: [
+        {
+          text: 'Annulla',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Cancella',
+          handler: () => {
+            console.log('delete clicked');
+            // this.service.deleteItem(item.key);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
   async showFilter() {
     console.log('filtering');
     const next = (filterFunction: (item: ItemModelInterface) => boolean) => {
