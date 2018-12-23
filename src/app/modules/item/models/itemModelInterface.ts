@@ -3,6 +3,8 @@ import { ItemServiceInterface } from './ItemServiceInterface';
 import { AlertOptions } from '@ionic/core';
 import { ItemFilterOPtions } from './ItemFIlterOptions';
 
+export type Genere = 'o'|'a';
+
 export interface ItemModelInterface {
     title: string;
     key: string;
@@ -13,9 +15,17 @@ export interface ItemModelInterface {
     getValue4(): Value;
     getPopup(item: ItemModelInterface, service: ItemServiceInterface): any;
     getFilterPopup(next: (any) => any);
-        getAggregate(): Value; /*ritorna l'etichetta e il valore da visualizzare del campo aggregato */
+    /**ritorna l'etichetta e il valore da visualizzare del campo aggregato **/
+    getAggregate(): Value;
     aggregateAction(): any | void;
     showDetail(): any | void;
     serialize();
     getFilterParams(): ItemFilterOPtions[];
+    getElement(): { element: string, genere: Genere };
+    /**ritorna il nome del tipo di elemento
+     * @returns {element:string,genere:'o'|'a'}
+    */
 }
+
+
+

@@ -12,7 +12,7 @@ import { ItemServiceInterface } from '../../models/ItemServiceInterface';
 export class ItemsListComponent implements OnInit, OnChanges {
   @Input() items_list: ItemModelInterface[];
   @Input() service: ItemServiceInterface;
-  @Input() dummyItem: ItemModelInterface;
+  dummyItem: ItemModelInterface;
   @Input() filterFunction: (item: ItemModelInterface) => boolean;
 
 
@@ -20,13 +20,14 @@ export class ItemsListComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.filterFunction = (v: ItemModelInterface) => true;
+    this.dummyItem = this.service.getDummyItem();
   }
 
 
   async deleteItem(item: ItemModelInterface) {
-    console.log('deleting', item);
+    const element = this.service.getDummyItem().getElement();
     const alert = await this.alertCtrl.create({
-      message: 'vuoi cancellare questo elemento?',
+      message: ` vuoi deavero cancellare quest${element.genere} ${element.element}?(${item.title})`,
       buttons: [
         {
           text: 'Annulla',
@@ -53,35 +54,9 @@ export class ItemsListComponent implements OnInit, OnChanges {
       console.log('got filterFunction', this.filterFunction);
     };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     const popup = this.dummyItem.getFilterPopup(next);
-
     const alert = await this.alertCtrl.create(popup);
     await alert.present();
-
-    // console.log('dummyItem', this.dummyItem.getFilterPopup(next));
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -95,7 +70,7 @@ export class ItemsListComponent implements OnInit, OnChanges {
   }
 
   countItems() {
-    return this.items_list.filter(this.filterFunction).length;
+    return (this.items_list) ? this.items_list.filter(this.filterFunction).length : 'loading';
   }
 
   async do(item: ItemModelInterface) {

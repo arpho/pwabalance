@@ -6,5 +6,5 @@
 
 <ion-content padding>
   <app-item-field-filter [label]="filterLabel" (doFilter)="filterFunction=searchFunctionFactory($event)"></app-item-field-filter>
-  <my-items-list [items_list]="CategoriesList"[service]="categories"[dummyItem]="dummyItem" [filterFunction]= "filterFunction"></my-items-list>
+  <my-items-list [items_list]="CategoriesList"[service]="categories" [filterFunction]= "filterFunction"></my-items-list>
 </ion-content>

@@ -7,7 +7,7 @@ import { ItemModelInterface } from '../models/itemModelInterface';
 export class FilterItemsPipe implements PipeTransform {
 
   transform(allItems: ItemModelInterface[], args?: any): any {
-    return (args) ? allItems.filter(args) : allItems;
+    return (args && allItems) ? allItems.filter(args) : allItems;
   }
 
 }

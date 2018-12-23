@@ -1,11 +1,12 @@
 
 
 import { FirebaseObject } from './firebaseObject';
-import { ItemModelInterface } from '../modules/item/models/itemModelInterface';
+import { ItemModelInterface, Genere } from '../modules/item/models/itemModelInterface';
 import { Value } from '../modules/item/models/value';
 import { ItemServiceInterface } from '../modules/item/models/ItemServiceInterface';
 import { ItemFilterOPtions } from '../modules/item/models/ItemFIlterOptions';
 import { Item } from '@ionic/angular';
+import { GeneratedFile } from '@angular/compiler';
 export class CategoryModel implements FirebaseObject, ItemModelInterface {
     key: string;
     title: string;
@@ -21,10 +22,13 @@ export class CategoryModel implements FirebaseObject, ItemModelInterface {
 
     getFilterParams() {
         const out: ItemFilterOPtions = new ItemFilterOPtions('categoria', 'text');
-        
         return [out];
     }
 
+    getElement() {
+        const genere: Genere = 'a';
+        return { element: 'categoria', genere: genere };
+    }
     getValue0() {
         const value = new Value();
         value.label = 'categoria';

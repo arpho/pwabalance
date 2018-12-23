@@ -18,6 +18,12 @@ export class CategoriesService implements ItemServiceInterface {
         this.categoriesListRef = firebase.database().ref(`/categorie/${user.uid}/`);
       }
     });
+    
+  }
+  
+  getDummyItem() {
+    
+    return new CategoryModel();
   }
 
   createCategory(

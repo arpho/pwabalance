@@ -10,7 +10,6 @@ import { ItemModelInterface } from 'src/app/modules/item/models/itemModelInterfa
 })
 export class CategoriePage implements OnInit, OnChanges {
   public CategoriesList: Array<CategoryModel>;
-  public dummyItem: ItemModelInterface;
   public filterLabel: String = 'Categorie';
   public filterString: string;
   public filterFunction: (item: ItemModelInterface) => Boolean;
@@ -28,7 +27,6 @@ export class CategoriePage implements OnInit, OnChanges {
   ngOnInit() {
     this.categories.getCategoriesList().on('value', eventCategoriesListSnapshot => {
       this.CategoriesList = [];
-      this.dummyItem = new CategoryModel();
       eventCategoriesListSnapshot.forEach(snap => {
         // this.CategoriesList.push
         const category = new CategoryModel();
