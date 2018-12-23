@@ -18,11 +18,11 @@ export class CategoriesService implements ItemServiceInterface {
         this.categoriesListRef = firebase.database().ref(`/categorie/${user.uid}/`);
       }
     });
-    
+
   }
-  
+
   getDummyItem() {
-    
+
     return new CategoryModel();
   }
 
@@ -39,12 +39,8 @@ export class CategoriesService implements ItemServiceInterface {
       cost: eventCost * 1,
       revenue: eventCost * -1,
     });
-  }/*
-  createPr(pr: PrModel): firebase.database.ThenableReference {
-    console.log('creating pr', pr);
-    return this.categoriesListRef.push(pr);
   }
-*/
+
   getCategoriesList(): firebase.database.Reference {
     return this.categoriesListRef;
   }

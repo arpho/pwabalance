@@ -5,17 +5,22 @@
 
     <my-item [Item]="item" (click)="do(item)"></my-item>
 
-    <ion-item-options side="start" >
+    <ion-item-options side="start">
       <button ion-button danger class='danger' (click)="deleteItem(item)">
         <ion-icon name="trash"></ion-icon>
         Elimina
       </button>
     </ion-item-options>
 
-</ion-item-sliding>
-<div class="spinner">
-  <div class="dot1"></div>
-  <div class="dot2"></div>
-</div>
+  </ion-item-sliding>
+  
+    <div ng-swith="showSpinner">
+  
+    
+      <div class="spinner" ng-switch-when="'show'">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+      </div>
+    </div>
 
 </ion-list>

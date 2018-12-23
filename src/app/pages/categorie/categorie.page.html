@@ -1,10 +1,13 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>categorie </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <app-item-field-filter [label]="filterLabel" (doFilter)="filterFunction=searchFunctionFactory($event)"></app-item-field-filter>
-  <my-items-list [items_list]="CategoriesList"[service]="categories" [filterFunction]= "filterFunction"></my-items-list>
+  <my-items-list [items_list]="CategoriesList" [service]="categories" [filterFunction]="filterFunction"></my-items-list>
 </ion-content>

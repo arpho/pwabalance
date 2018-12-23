@@ -13,6 +13,7 @@ import { environment } from '../environments/environment';
 import { ItemModule } from '../app/modules/item/item.module';
 import { FieldFilterComponent } from './components/field-filter/field-filter.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations:
@@ -21,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ],
   entryComponents: [],
   imports: [
+    CommonModule,
     BrowserModule,
     IonicModule.forRoot(),
     ItemModule,

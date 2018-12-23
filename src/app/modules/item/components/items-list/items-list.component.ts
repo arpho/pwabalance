@@ -14,6 +14,7 @@ export class ItemsListComponent implements OnInit, OnChanges {
   @Input() service: ItemServiceInterface;
   dummyItem: ItemModelInterface;
   @Input() filterFunction: (item: ItemModelInterface) => boolean;
+  public showSpinner = 'show';
 
 
   constructor(public alertCtrl: AlertController) { }
@@ -61,7 +62,10 @@ export class ItemsListComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.items_list) {
+      console.log(this.showSpinner);
       this.items_list = changes.items_list.currentValue;
+      this.showSpinner = 'hide';
+      console.log(this.showSpinner);
     }
     if (changes.filterFunction) {
       this.filterFunction = changes.filterFunction.currentValue;
