@@ -28,7 +28,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CategoriePage, ItemFieldFilterComponent, 
+  declarations: [CategoriePage, ItemFieldFilterComponent,
     FieldFilterComponent]
 })
 export class CategoriePageModule { }
