@@ -1,6 +1,14 @@
 <p class="counter">{{countItems()}}</p>
 <ion-icon name="search" class="applyFi1lter" (click)="showFilter()"></ion-icon>
 <ion-list>
+    <div >
+
+        
+      </div>
+      <div class="spinner" [style.display]="showSpinner ? 'block' : 'none'" >
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+      </div>
   <ion-item-sliding *ngFor="let item of (items_list|filterItems:filterFunction)" #sliding_item>
 
     <my-item [Item]="item" (click)="do(item)"></my-item>
@@ -14,13 +22,6 @@
 
   </ion-item-sliding>
 
-  <div ng-swith="showSpinner">
-
-
-    <div class="spinner" ng-switch-when="'show'">
-      <div class="dot1"></div>
-      <div class="dot2"></div>
-    </div>
-  </div>
+ 
 
 </ion-list>

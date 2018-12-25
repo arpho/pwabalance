@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, ChangeDetectionStra
 import { ItemModelInterface } from '../../models/itemModelInterface';
 import { AlertController, Item } from '@ionic/angular';
 import { ItemServiceInterface } from '../../models/ItemServiceInterface';
+import { delay } from 'q';
 
 @Component({
   selector: 'my-items-list',
@@ -14,7 +15,7 @@ export class ItemsListComponent implements OnInit, OnChanges {
   @Input() service: ItemServiceInterface;
   dummyItem: ItemModelInterface;
   @Input() filterFunction: (item: ItemModelInterface) => boolean;
-  public showSpinner = 'show';
+  public showSpinner = true;
 
 
   constructor(public alertCtrl: AlertController) { }
@@ -61,11 +62,9 @@ export class ItemsListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.items_list) {
-      console.log(this.showSpinner);
+    if (changes.items_list && changes.items_list.currentValue) {
       this.items_list = changes.items_list.currentValue;
-      this.showSpinner = 'hide';
-      console.log(this.showSpinner);
+      this.showSpinner = false;
     }
     if (changes.filterFunction) {
       this.filterFunction = changes.filterFunction.currentValue;
