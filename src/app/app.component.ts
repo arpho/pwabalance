@@ -19,23 +19,28 @@ export class AppComponent {
     },
     {
       title: 'categorie',
-      url: 'categorie',
+      url: '/categorie',
       icon: 'pricetags'
     },
     {
       title: 'pagamenti',
-      url: 'pagamenti',
+      url: '/pagamenti',
       icon: 'cash'
     },
     {
       title: 'fornitori',
-      url: 'fornitori',
+      url: '/fornitori',
       icon: 'people'
     },
     {
       title: 'carrelli della spesa',
-      url: 'home',
+      url: '/home',
       icon: 'cart'
+    },
+    {
+      title: 'Grafici',
+      url: '/grafici',
+      icon: 'stats'
     }
   ];
 
