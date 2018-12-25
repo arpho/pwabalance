@@ -20,4 +20,6 @@ export interface ItemServiceInterface {
 
     /** return a void item of the type handled by the service */
     getDummyItem(): ItemModelInterface;
+    /**crea un item in firebase  */
+    createItem(item: ItemModelInterface): firebase.database.ThenableReference;
 }

@@ -25,6 +25,12 @@ export class ItemsListComponent implements OnInit, OnChanges {
     this.dummyItem = this.service.getDummyItem();
   }
 
+  async create() {
+    console.log('create');
+    const popup = this.service.getDummyItem().getCreatePopup(this.service);
+    const alert = await this.alertCtrl.create(popup);
+    await alert.present();
+  }
 
   async deleteItem(item: ItemModelInterface) {
     const element = this.service.getDummyItem().getElement();
@@ -40,8 +46,7 @@ export class ItemsListComponent implements OnInit, OnChanges {
         {
           text: 'Cancella',
           handler: () => {
-            console.log('delete clicked');
-            // this.service.deleteItem(item.key);
+            this.service.deleteItem(item.key);
           }
         }
       ]
@@ -50,10 +55,8 @@ export class ItemsListComponent implements OnInit, OnChanges {
   }
 
   async showFilter() {
-    console.log('filtering');
     const next = (filterFunction: (item: ItemModelInterface) => boolean) => {
       this.filterFunction = filterFunction;
-      console.log('got filterFunction', this.filterFunction);
     };
 
     const popup = this.dummyItem.getFilterPopup(next);
@@ -78,7 +81,7 @@ export class ItemsListComponent implements OnInit, OnChanges {
 
   async do(item: ItemModelInterface) {
 
-    const popup = item.getPopup(item, this.service);
+    const popup = item.getEditPopup(item, this.service);
     const alert = await this.alertCtrl.create(popup);
     await alert.present();
 

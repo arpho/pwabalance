@@ -36,7 +36,7 @@ export class CategoryModel implements FirebaseObject, ItemModelInterface {
         return value;
     }
 
-    getPopup(item: ItemModelInterface, service: ItemServiceInterface) {
+    getEditPopup(item: ItemModelInterface, service: ItemServiceInterface) {
 
         return {
             subHeader: 'modifica categoria',
@@ -46,6 +46,31 @@ export class CategoryModel implements FirebaseObject, ItemModelInterface {
                     name: 'title',
                     placeholder: 'categoria',
                     value: item.title,
+                },
+            ],
+            buttons: [
+                { text: 'Annulla' },
+                {
+                    text: 'Salva',
+                    handler: data => {
+                        item.title = data.title;
+                        service.updateItem(item);
+                    },
+                },
+            ],
+        };
+    }
+
+    getCreatePopup(service: ItemServiceInterface) {
+        const item = new CategoryModel();
+
+        return {
+            subHeader: 'modifica categoria',
+            inputs: [
+                {
+                    type: 'text',
+                    name: 'title',
+                    placeholder: 'categoria',
                 },
             ],
             buttons: [

@@ -31,7 +31,7 @@ export class PaymentsModel implements ItemModelInterface {
     }
     load(key: string, service: ItemServiceInterface) {
         service.getItem(key).on('value', pay => {
-            this.nome = pay.val().nome;
+            this.nome = pay.val().nome ? pay.val().nome : '';
             this.title = this.nome;
             this.title = pay.val().title || this.nome; // se lo item è aggiornato avrà il valore di tilte, altrimenti quello di nome
             this.note = pay.val().note;
@@ -58,7 +58,6 @@ export class PaymentsModel implements ItemModelInterface {
                 {
                     text: 'Salva',
                     handler: data => {
-                        console.log('popup');
                         const filterFunction = (item: ItemModelInterface) => {
                             return this.title.toLowerCase().indexOf(data[0]) > -1;
                         };
@@ -77,7 +76,7 @@ export class PaymentsModel implements ItemModelInterface {
         return this;
     }
 
-    getPopup(item: PaymentsModel, service: ItemServiceInterface) {
+    getEditPopup(item: PaymentsModel, service: ItemServiceInterface) {
 
         return {
             subHeader: 'modifica pagamento',
@@ -103,6 +102,39 @@ export class PaymentsModel implements ItemModelInterface {
                         item.title = data.title;
                         item.note = data.note;
                         service.updateItem(item);
+                    },
+                },
+            ],
+        };
+    }
+
+    getCreatePopup(service: ItemServiceInterface) {
+        const item = new PaymentsModel();
+
+        return {
+            subHeader: 'modifica pagamento',
+            inputs: [
+                {
+                    type: 'text',
+                    name: 'title',
+                    placeholder: 'nome pagamento',
+                },
+                {
+                    type: 'text',
+                    name: 'note',
+                    placeholder: 'note',
+                },
+            ],
+            buttons: [
+                { text: 'Annulla' },
+                {
+                    text: 'Salva',
+                    handler: data => {
+                        item.title = data.title;
+                        item.note = data.note;
+                        service.createItem(item).then((v) => {
+                            // TODO
+                        });
                     },
                 },
             ],
@@ -160,7 +192,6 @@ export class PaymentsModel implements ItemModelInterface {
 
     serialize() {
         const out = { key: this.key, title: this.title, addebito: this.addebito, note: this.note, };
-        console.log(out);
         return out;
     }
 }

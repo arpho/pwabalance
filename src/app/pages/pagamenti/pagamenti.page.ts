@@ -9,7 +9,7 @@ import {PaymentsModel} from '../../models/paymentModel';
 })
 export class PagamentiPage implements OnInit {
   public filterLabel: String = 'Pagamenti';
-  public paymentsList = Array<PaymentsModel>;
+  public paymentsList = Array<PaymentsModel>();
 
   constructor(public payments: PaymentsService) { }
 

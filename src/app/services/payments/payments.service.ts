@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ItemServiceInterface } from '../../modules/item/models/ItemServiceInterface';
-import {ItemModelInterface} from '../../modules/item/models/itemModelInterface';
+import { ItemModelInterface } from '../../modules/item/models/itemModelInterface';
 import { PaymentsModel } from '../../models/paymentModel';
 import * as firebase from 'firebase';
 
@@ -10,7 +10,6 @@ import * as firebase from 'firebase';
 export class PaymentsService implements ItemServiceInterface {
 
   public paymentsListRef: firebase.database.Reference;
-  public eventListRef: firebase.database.Reference;
   getDummyItem() {
     return new PaymentsModel();
 
@@ -22,19 +21,22 @@ export class PaymentsService implements ItemServiceInterface {
         this.paymentsListRef = firebase.database().ref(`/pagamenti/${user.uid}/`);
       }
     });
-   }
+  }
 
 
   getEntitiesList(): firebase.database.Reference {
     return this.paymentsListRef;
   }
 
-  getEventDetail(eventId: string): firebase.database.Reference {
-    return this.eventListRef.child(eventId);
-  }
 
   getItem(prId: string): firebase.database.Reference {
     return this.paymentsListRef.child(prId);
+  }
+
+  createItem(item: ItemModelInterface) {
+    console.log('serialized item', item.serialize())
+    return this.paymentsListRef.push(item.serialize());
+
   }
 
   updateItem(item: ItemModelInterface) {

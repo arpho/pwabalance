@@ -10,7 +10,6 @@ import { ItemModelInterface } from 'src/app/modules/item/models/itemModelInterfa
 })
 export class CategoriesService implements ItemServiceInterface {
   public categoriesListRef: firebase.database.Reference;
-  public eventListRef: firebase.database.Reference;
 
   constructor() {
     firebase.auth().onAuthStateChanged(user => {
@@ -32,7 +31,7 @@ export class CategoriesService implements ItemServiceInterface {
     eventPrice: number,
     eventCost: number
   ): firebase.database.ThenableReference {
-    return this.eventListRef.push({
+    return this.categoriesListRef.push({
       name: eventName,
       date: eventDate.toDateString(),
       price: eventPrice * 1,
@@ -40,14 +39,15 @@ export class CategoriesService implements ItemServiceInterface {
       revenue: eventCost * -1,
     });
   }
+  createItem(item: ItemModelInterface) {
+    return this.categoriesListRef.push(item);
+
+  }
 
   getCategoriesList(): firebase.database.Reference {
     return this.categoriesListRef;
   }
 
-  getEventDetail(eventId: string): firebase.database.Reference {
-    return this.eventListRef.child(eventId);
-  }
 
   getItem(prId: string): firebase.database.Reference {
     return this.categoriesListRef.child(prId);
