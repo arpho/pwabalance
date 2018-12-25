@@ -26,7 +26,6 @@ export class ItemsListComponent implements OnInit, OnChanges {
   }
 
   async create() {
-    console.log('create');
     const popup = this.service.getDummyItem().getCreatePopup(this.service);
     const alert = await this.alertCtrl.create(popup);
     await alert.present();

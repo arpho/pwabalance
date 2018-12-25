@@ -31,12 +31,14 @@ export class PaymentsModel implements ItemModelInterface {
     }
     load(key: string, service: ItemServiceInterface) {
         service.getItem(key).on('value', pay => {
-            this.nome = pay.val().nome ? pay.val().nome : '';
-            this.title = this.nome;
-            this.title = pay.val().title || this.nome; // se lo item è aggiornato avrà il valore di tilte, altrimenti quello di nome
-            this.note = pay.val().note;
-            this.archived = pay.val().archived;
-            this.key = key;
+            if (pay.val()) {
+                this.nome = pay.val().nome ? pay.val().nome : '';
+                this.title = this.nome;
+                this.title = pay.val().title || this.nome; // se lo item è aggiornato avrà il valore di tilte, altrimenti quello di nome
+                this.note = pay.val().note;
+                this.archived = pay.val().archived;
+                this.key = key;
+            }
         });
 
     }
@@ -112,7 +114,7 @@ export class PaymentsModel implements ItemModelInterface {
         const item = new PaymentsModel();
 
         return {
-            subHeader: 'modifica pagamento',
+            subHeader: 'Crea un nuovo  pagamento',
             inputs: [
                 {
                     type: 'text',

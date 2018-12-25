@@ -10,5 +10,6 @@
 
 <ion-content padding>
 
-  <my-items-list [service]='payments'[items_list]="paymentsList"></my-items-list>
+  <app-item-field-filter [label]="filterLabel0" (doFilter)="filterFunction=searchFunctionFactory({title:$event})"></app-item-field-filter>
+  <my-items-list [service]='payments'[items_list]="paymentsList" [filterFunction]="filterFunction"></my-items-list>
 </ion-content>

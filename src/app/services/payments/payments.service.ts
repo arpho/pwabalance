@@ -34,7 +34,6 @@ export class PaymentsService implements ItemServiceInterface {
   }
 
   createItem(item: ItemModelInterface) {
-    console.log('serialized item', item.serialize())
     return this.paymentsListRef.push(item.serialize());
 
   }
