@@ -11,6 +11,7 @@ export class CategoryModel implements FirebaseObject, ItemModelInterface {
     key: string;
     title: string;
     service: any;
+    note:string;
     constructor() {
     }
     load(key, service) {
@@ -118,7 +119,7 @@ export class CategoryModel implements FirebaseObject, ItemModelInterface {
     getValue1() {
         const value = new Value();
         value.label = 'occorrenze';
-        value.value = 'to be implemnted';
+        value.value = '';
         return value;
     }
 
@@ -146,7 +147,7 @@ export class CategoryModel implements FirebaseObject, ItemModelInterface {
     getAggregate() {
         const value = new Value();
         value.label = 'spesa complessiva';
-        value.value = 'to be implented';
+        value.value = ' to be implented';
         return value;
     }
 

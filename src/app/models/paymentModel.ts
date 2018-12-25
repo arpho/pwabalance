@@ -158,8 +158,8 @@ export class PaymentsModel implements ItemModelInterface {
 
     getValue1() {
         const value = new Value();
-        value.label = 'occorrenze';
-        value.value = 'to be implemnted';
+        value.label = 'note';
+        value.value = this.note;
         return value;
     }
 

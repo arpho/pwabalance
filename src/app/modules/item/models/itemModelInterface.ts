@@ -7,6 +7,7 @@ export type Genere = 'o' | 'a';
 
 export interface ItemModelInterface {
     title: string;
+    note: string;
     key: string;
     getValue0(): Value;
     getValue1(): Value;

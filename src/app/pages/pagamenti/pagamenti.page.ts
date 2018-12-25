@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PaymentsService } from '../../services/payments/payments.service';
 import { PaymentsModel } from '../../models/paymentModel';
-import { ItemModelInterface} from '../../modules/item/models/itemModelInterface';
+import { ItemModelInterface } from '../../modules/item/models/itemModelInterface';
 
 @Component({
   selector: 'app-pagamenti',
@@ -10,13 +10,19 @@ import { ItemModelInterface} from '../../modules/item/models/itemModelInterface'
 })
 export class PagamentiPage implements OnInit {
   public filterLabel0: String = 'filtra nome';
+  public filterLabel1: String = ' filtra nota';
   public paymentsList = Array<PaymentsModel>();
 
   public filterFunction: (item: ItemModelInterface) => Boolean;
   constructor(public payments: PaymentsService) { }
 
   searchFunctionFactory(event) {
-    const out = (item: ItemModelInterface) => item.title.toLowerCase().indexOf(event.title.data.toLowerCase()) !== -1;
+    const filterTitle = event.title ?
+      (item: ItemModelInterface) => item.title.toLowerCase().indexOf(event.title.data.toLowerCase()) !== -1 :
+      (item: ItemModelInterface) => true; // se non filtro il campo title prendo tutto
+    const filterNote = event.note ? (item: ItemModelInterface) => item.note.toLowerCase().indexOf(event.note.data.toLowerCase()) !== -1 :
+      (item: ItemModelInterface) => true;
+    const out = (item: ItemModelInterface) => filterNote(item) && filterTitle(item);
     return out;
   }
 

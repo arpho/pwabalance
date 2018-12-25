@@ -24,6 +24,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PagamentiPage, ItemFieldFilterComponent]
+  declarations: [PagamentiPage]
 })
 export class PagamentiPageModule { }
