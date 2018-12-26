@@ -1,9 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>pageItemsList</ion-title>
-  </ion-toolbar>
-</ion-header>
+<p class="counter">{{countItems()}}</p>
+<ion-icon name="search" class="applyFi1lter" (click)="showFilter()"></ion-icon>
+<ion-list>
 
-<ion-content padding>
+  <ion-fab>
+    <button ion-fab>
+      <ion-icon name="create" (click)="create()"></ion-icon>
+    </button>
+  </ion-fab>
+  <div>
 
-</ion-content>
+
+  </div>
+  <div class="spinner" [style.display]="showSpinner ? 'block' : 'none'">
+    <div class="dot1"></div>
+    <div class="dot2"></div>
+  </div>
+  <ion-item-sliding *ngFor="let item of (items_list|filterItems:filterFunction)" #sliding_item>
+
+    <app-page-item [Item]="item" (click)="do(item)"></app-page-item>
+
+    <ion-item-options side="start">
+      <button ion-button danger class='danger' (click)="deleteItem(item,sliding_item)">
+        <ion-icon name="trash"></ion-icon>
+        Elimina
+      </button>
+    </ion-item-options>
+
+  </ion-item-sliding>
+
+
+</ion-list>

@@ -42,16 +42,10 @@ export class SupplierModel implements ItemModelInterface {
 
     load(key, service) {
         service.getItem(key).on('value', sup => {
-            /* this.title = sup.val().title;
-             this.note = sup.val().note;
-             this.altitude = sup.val().altitude;
-             this.latitudine = sup.val().latitudine;
-             this.longitudine = sup.val().longitudine;
-             this.indirizzo = sup.val().indirizzo
-             this.key = key;*/
-            console.log(sup.val(), Object.entries(sup.val()));
             Object.entries(sup.val()).forEach(e => this[e[0]] = e[1]);
-            console.log(this);
+            this.key = sup.key;
+            this.title = this.title || this.nome; // retro compatibilità
+
         });
     }
 
@@ -66,7 +60,7 @@ export class SupplierModel implements ItemModelInterface {
     }
     getValue0() {
         const value = new Value();
-        value.label = 'fornitrore';
+        value.label = 'fornitore';
         value.value = this.title;
         return value;
     }

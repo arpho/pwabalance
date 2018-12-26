@@ -1,4 +1,4 @@
-import { Component, OnInit, Onchanges, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { SuppliersService } from '../../services/suplliers/suppliers.service';
 import { CategoryModel } from 'src/app/models/CategoryModel';
 import { ItemModelInterface } from 'src/app/modules/item/models/itemModelInterface';
@@ -23,7 +23,6 @@ export class FornitoriPage implements OnInit, OnChanges {
       eventSuppliersListSnapshot.forEach(snap => {
         const supplier = new SupplierModel();
         supplier.load(snap.key, this.suppliers);
-        console.log(supplier);
         this.SuppliersList.push(supplier);
       });
     });

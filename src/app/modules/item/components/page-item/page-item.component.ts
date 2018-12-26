@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ItemComponent } from '../item/item.component';
 import { AlertController } from '@ionic/angular';
 import { ItemModelInterface } from '../../models/itemModelInterface';
@@ -8,7 +8,8 @@ import { ItemModelInterface } from '../../models/itemModelInterface';
   templateUrl: './page-item.page.html',
   styleUrls: ['./page-item.page.scss'],
 })
-export class PageItemPage extends ItemComponent implements OnInit {
+export class PageItemComponent extends ItemComponent implements OnInit {
+  @Input() Item: ItemModelInterface;
 
   constructor(alertCtrl: AlertController) {
     super(alertCtrl);

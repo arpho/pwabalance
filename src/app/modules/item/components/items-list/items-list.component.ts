@@ -13,7 +13,7 @@ import { delay } from 'q';
 export class ItemsListComponent implements OnInit, OnChanges {
   @Input() items_list: ItemModelInterface[];
   @Input() service: ItemServiceInterface;
-  dummyItem: ItemModelInterface;
+  public dummyItem: ItemModelInterface;
   @Input() filterFunction: (item: ItemModelInterface) => boolean;
   public showSpinner = true;
 
