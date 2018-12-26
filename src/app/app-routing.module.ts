@@ -38,7 +38,6 @@ const routes: Routes = [
   },
   { path: 'components', loadChildren: './modules/item/components/components.module#ComponentsPageModule' },
   { path: 'pageItemsList', loadChildren: './modules/item/components/page-items-list/page-items-list.module#PageItemsListPageModule' },
-  { path: 'pageItem', loadChildren: './modules/item/components/page-item/page-item.module#PageItemPageModule' }
 ];
 
 @NgModule({
