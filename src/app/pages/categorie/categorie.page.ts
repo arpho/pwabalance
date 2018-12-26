@@ -16,7 +16,6 @@ export class CategoriePage implements OnInit, OnChanges {
 
   constructor(public categories: CategoriesService) { }
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
   }
 
   searchFunctionFactory(v): (item: ItemModelInterface) => Boolean {

@@ -8,7 +8,7 @@ import { ItemFieldFilterComponent } from './components/item-field-filter/item-fi
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ItemComponent, ItemsListComponent, ItemFieldFilterComponent, FilterItemsPipe],
+  declarations: [ItemComponent, ItemsListComponent, ItemFieldFilterComponent, FilterItemsPipe,],
   imports: [
     CommonModule,
 
