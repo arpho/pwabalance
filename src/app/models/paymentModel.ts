@@ -93,7 +93,7 @@ export class PaymentsModel implements ItemModelInterface {
                     type: 'text',
                     name: 'note',
                     placeholder: 'note',
-                    value: item.title,
+                    value: item.note,
                 },
             ],
             buttons: [

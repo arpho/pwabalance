@@ -31,7 +31,8 @@ export class ItemsListComponent implements OnInit, OnChanges {
     await alert.present();
   }
 
-  async deleteItem(item: ItemModelInterface) {
+  async deleteItem(item: ItemModelInterface, slide) {
+    slide.close();
     const element = this.service.getDummyItem().getElement();
     const alert = await this.alertCtrl.create({
       message: ` vuoi deavero cancellare quest${element.genere} ${element.element}?(${item.title})`,
