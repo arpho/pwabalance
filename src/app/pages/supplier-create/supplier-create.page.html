@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
+
+      
+        
+
+
+
     <ion-title>supplierCreate</ion-title>
+    
+ 
   </ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button
+    [text]="buttonText"
+    [icon]="add">
+</ion-back-button>
+</ion-buttons>
 </ion-header>
 
 <ion-content padding>
-
+  <my-item></my-item>
+  <app-dynamic-form [questions]="questions"></app-dynamic-form>
 </ion-content>

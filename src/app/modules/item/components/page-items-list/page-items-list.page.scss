@@ -21,6 +21,20 @@
     -webkit-animation: sk-rotate 2.0s infinite linear;
     animation: sk-rotate 2.0s infinite linear;
   }
+  .fab-button{
+    background-color: #1976d2;
+    border: 0;
+    position: fixed;
+    border-radius: 30px;
+    width: 37px;
+    height: 37px;
+    color: #fff;
+    /* bottom: -143em; */
+    top: 55em;
+    right: 2em;
+    line-height: -167px;
+    text-align: center;
+  }
   
   .dot1, .dot2 {
     width: 60%;

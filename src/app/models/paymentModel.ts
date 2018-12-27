@@ -110,7 +110,7 @@ export class PaymentsModel implements ItemModelInterface {
         };
     }
 
-    getCreatePopup(service: ItemServiceInterface) {
+    getCreatePopup(service?: ItemServiceInterface) {
         const item = new PaymentsModel();
 
         return {

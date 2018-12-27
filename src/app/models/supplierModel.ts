@@ -145,7 +145,7 @@ export class SupplierModel implements ItemModelInterface {
     getCreatePopup(service: ItemServiceInterface) {
         const item = new SupplierModel();
 
-        return 'app-page-supplier-create';
+        return 'supplierCreate';
     }
 
     getFilterPopup(next) {

@@ -14,11 +14,13 @@ import { ItemModule } from '../app/modules/item/item.module';
 import { FieldFilterComponent } from './components/field-filter/field-filter.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations:
     [
-      AppComponent
+      AppComponent,
+
     ],
   entryComponents: [],
   imports: [
@@ -28,7 +30,8 @@ import { CommonModule } from '@angular/common';
     ItemModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     StatusBar,

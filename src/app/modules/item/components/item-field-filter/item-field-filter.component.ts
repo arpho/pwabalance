@@ -1,11 +1,10 @@
 
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl, FormBuilder, AbstractControl } from '@angular/forms';
-import { Refresher } from '@ionic/angular';
 
 
 @Component({
-  selector: 'app-item-field-filter',
+  selector: 'item-field-filter',
   templateUrl: './item-field-filter.component.html',
   styleUrls: ['./item-field-filter.component.scss']
 })

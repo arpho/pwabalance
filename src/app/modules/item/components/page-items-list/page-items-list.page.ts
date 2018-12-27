@@ -69,4 +69,11 @@ export class PageItemsListComponent implements OnInit, OnChanges {
 
   }
 
+  createItem() {
+    this.router.navigateByUrl(`${this.service.getDummyItem().getCreatePopup()}`);
+    console.log('to do ');
+
+
+  }
+
 }
