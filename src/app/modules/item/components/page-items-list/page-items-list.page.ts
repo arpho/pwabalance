@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, } from '@angular/co
 import { AlertController } from '@ionic/angular';
 import { ItemModelInterface } from '../../models/itemModelInterface';
 import { ItemServiceInterface } from '../../models/ItemServiceInterface';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-items-list',
@@ -16,7 +16,8 @@ export class PageItemsListComponent implements OnInit, OnChanges {
   @Input() filterFunction: (item: ItemModelInterface) => boolean;
   public showSpinner = true;
 
-  constructor(public alertCtrl: AlertController) {
+  constructor(public alertCtrl: AlertController,
+    public router: Router) {
     this.filterFunction = (v) => true;
   }
 
@@ -61,7 +62,8 @@ export class PageItemsListComponent implements OnInit, OnChanges {
     return (this.items_list) ? this.items_list.filter(this.filterFunction).length : 'loading';
   }
 
-  do(item: ItemModelInterface) {
+  editItem(item: ItemModelInterface) {
+    this.router.navigateByUrl(`${item.getEditPopup()}/${item.key}`);
     console.log('to do ');
 
 

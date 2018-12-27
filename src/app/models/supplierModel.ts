@@ -137,9 +137,9 @@ export class SupplierModel implements ItemModelInterface {
         return { key: this.key, title: this.title };
     }
 
-    getEditPopup(item: ItemModelInterface, service: ItemServiceInterface) {
+    getEditPopup() {
 
-        return 'app-page-supplier-update';
+        return 'supplierUpdate';
     }
 
     getCreatePopup(service: ItemServiceInterface) {
