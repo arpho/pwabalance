@@ -149,14 +149,14 @@ export class PaymentsModel implements ItemModelInterface {
     }
 
 
-    getValue0() {
+    getTitle() {
         const value = new Value();
         value.label = 'pagamento';
         value.value = this.title;
         return value;
     }
 
-    getValue1() {
+    getNote() {
         const value = new Value();
         value.label = 'note';
         value.value = this.note;

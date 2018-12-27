@@ -58,7 +58,7 @@ export class SupplierModel implements ItemModelInterface {
         const genere: Genere = 'o';
         return { element: 'fornitore', genere: genere };
     }
-    getValue0() {
+    getTitle() {
         const value = new Value();
         value.label = 'fornitore';
         value.value = this.title;
@@ -95,7 +95,7 @@ export class SupplierModel implements ItemModelInterface {
     }
 
 
-    getValue1() {
+    getNote() {
         const value = new Value();
         value.label = 'note';
         value.value = this.note;

@@ -30,7 +30,7 @@ export class CategoryModel implements FirebaseObject, ItemModelInterface {
         const genere: Genere = 'a';
         return { element: 'categoria', genere: genere };
     }
-    getValue0() {
+    getTitle() {
         const value = new Value();
         value.label = 'categoria';
         value.value = this.title;
@@ -116,7 +116,7 @@ export class CategoryModel implements FirebaseObject, ItemModelInterface {
     }
 
 
-    getValue1() {
+    getNote() {
         const value = new Value();
         value.label = 'occorrenze';
         value.value = '';

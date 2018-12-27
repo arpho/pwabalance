@@ -9,8 +9,8 @@ export interface ItemModelInterface {
     title: string;
     note: string;
     key: string;
-    getValue0(): Value;
-    getValue1(): Value;
+    getTitle(): Value;
+    getNote(): Value;
     getValue2(): Value;
     getValue3(): Value;
     getValue4(): Value;
