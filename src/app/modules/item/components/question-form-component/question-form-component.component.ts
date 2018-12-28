@@ -11,4 +11,7 @@ export class QuestionFormComponent {
   @Input() question: QuestionBase<any>;
   @Input() form: FormGroup;
   get isValid() { return this.form.controls[this.question.key].valid; }
+  get getValue() {
+    return this.form.get(this.question.key).value;
+  }
 }

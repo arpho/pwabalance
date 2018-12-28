@@ -12,7 +12,9 @@ export class QuestionBase<T> {
         label?: string,
         required?: boolean,
         order?: number,
-        controlType?: string
+        controlType?: string,
+        labelTrue?: String,
+        labelFalse?: String,
     } = {}) {
         this.value = options.value;
         this.key = options.key || '';

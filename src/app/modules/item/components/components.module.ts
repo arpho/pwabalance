@@ -23,6 +23,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ComponentsPage, DynamicFormComponent, QuestionFormComponent]
+  declarations: [ComponentsPage,  ]
 })
 export class ComponentsPageModule {}

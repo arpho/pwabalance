@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { QuestionBase } from '../../modules/item/models/question-base';
 import { TextboxQuestion } from '../../modules/item/models/question-textbox';
 import { DropdownQuestion } from '../../modules/item/models/question-dropdown';
-import { SwitchQuestion } from '../../modules/item/models/question-swith';
+import { SwitchQuestion } from '../../modules/item/models/question-switch';
 
 
 @Component({
@@ -44,9 +44,11 @@ export class SupplierCreatePage implements OnInit {
         order: 2
       }),
       new SwitchQuestion({
-        key: 'online',
+        key: 'ecommerce',
         label: 'venditore online',
-        value: false,
+        labelTrue: 'venditore fa ecommerce',
+        labelFalse: ' venditore tradizionale',
+        value: true,
         required: false,
         order: 3
       })
