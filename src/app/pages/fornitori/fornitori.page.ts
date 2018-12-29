@@ -3,6 +3,8 @@ import { SuppliersService } from '../../services/suplliers/suppliers.service';
 import { CategoryModel } from 'src/app/models/CategoryModel';
 import { ItemModelInterface } from 'src/app/modules/item/models/itemModelInterface';
 import { SupplierModel } from 'src/app/models/supplierModel';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-fornitori',
@@ -15,7 +17,8 @@ export class FornitoriPage implements OnInit, OnChanges {
   public filterString: string;
   public filterFunction: (item: ItemModelInterface) => Boolean;
 
-  constructor(public suppliers: SuppliersService) { }
+  constructor(public suppliers: SuppliersService,
+    public router: Router) { }
 
   ngOnInit() {
     this.suppliers.getEntiesList().on('value', eventSuppliersListSnapshot => {
@@ -26,6 +29,14 @@ export class FornitoriPage implements OnInit, OnChanges {
         this.SuppliersList.push(supplier);
       });
     });
+  }
+
+
+  createItem() {
+    this.router.navigateByUrl(`${this.suppliers.getDummyItem().getCreatePopup()}`);
+    console.log('to do ');
+
+
   }
 
   ngOnChanges(changes: SimpleChanges) {

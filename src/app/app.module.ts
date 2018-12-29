@@ -14,6 +14,7 @@ import { ItemModule } from '../app/modules/item/item.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 
 @NgModule({
   declarations:
@@ -23,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ],
   entryComponents: [],
   imports: [
+    MatButtonModule,
+    MatCheckboxModule,
     CommonModule,
     BrowserModule,
     IonicModule.forRoot(),

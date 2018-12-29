@@ -142,7 +142,7 @@ export class SupplierModel implements ItemModelInterface {
         return 'supplierUpdate';
     }
 
-    getCreatePopup(service: ItemServiceInterface) {
+    getCreatePopup() {
         const item = new SupplierModel();
 
         return 'supplierCreate';

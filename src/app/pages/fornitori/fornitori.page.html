@@ -1,14 +1,19 @@
 <ion-header>
   <ion-toolbar>
 
-      <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>fornitori</ion-title>
+    <ion-buttons slot="end">
+      <button class="fab-button" (click)="createItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <app-page-items-list [items_list]="SuppliersList" [service]="suppliers" ></app-page-items-list>
+  <app-page-items-list [items_list]="SuppliersList" [service]="suppliers"></app-page-items-list>
 
 </ion-content>

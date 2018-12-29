@@ -1,4 +1,5 @@
 <p class="counter">{{countItems()}}</p>
+
 <ion-list>
 
   <div>
@@ -9,11 +10,6 @@
     <div class="dot1"></div>
     <div class="dot2"></div>
   </div>
-  <ion-fab>
-    <button ion-fab color="primary" class="fab-button">
-      <ion-icon name="add" (click)="createItem()"></ion-icon>
-    </button>
-  </ion-fab>
   <ion-item-sliding *ngFor="let item of (items_list|filterItems:filterFunction)" #sliding_item>
 
     <app-page-item [Item]="item" (click)="editItem(item)"></app-page-item>
@@ -26,6 +22,7 @@
     </ion-item-options>
 
   </ion-item-sliding>
+
 
 
 </ion-list>
