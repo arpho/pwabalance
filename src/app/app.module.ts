@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { GeoLocationModule } from './modules/geo-location/geo-location.module';
 
 @NgModule({
   declarations:
@@ -30,6 +31,7 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
     BrowserModule,
     IonicModule.forRoot(),
     ItemModule,
+    GeoLocationModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ReactiveFormsModule,

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { SupplierCreatePage } from './supplier-create.page';
 import { ItemModule } from '../../modules/item/item.module';
+import {GeoLocationModule} from '../../modules/geo-location/geo-location.module';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    ItemModule
+    ItemModule,
+    GeoLocationModule
   ],
   declarations: [SupplierCreatePage, ]
 })

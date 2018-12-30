@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
 import { QuestionBase } from '../../modules/item/models/question-base';
 import { TextboxQuestion } from '../../modules/item/models/question-textbox';
 import { DropdownQuestion } from '../../modules/item/models/question-dropdown';
@@ -56,6 +55,9 @@ export class SupplierCreatePage implements OnInit {
     ];
     this.questions = questions.sort((a, b) => a.order - b.order);
   }
+
+  
+
 
   ngOnInit() {
   }

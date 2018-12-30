@@ -1,0 +1,6 @@
+{
+  "appId": "com.arphosolutions.pwabalance",
+  "appName": "pwaBalance",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}

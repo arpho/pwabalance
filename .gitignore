@@ -31,7 +31,8 @@ node_modules
 .firebase
 configs
 www
-
 database\.rules\.json
-
 firebase\.json
+electron
+platforms
+plugins
