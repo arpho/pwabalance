@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 import { ItemModule } from '../../modules/item/item.module';
-import {GeoLocationModule} from '../../modules/geo-location/geo-location.module';
+import { GeoLocationModule } from '../../modules/geo-location/geo-location.module';
 
 
 import { FornitoriPage } from './fornitori.page';
@@ -28,4 +28,4 @@ const routes: Routes = [
   ],
   declarations: [FornitoriPage]
 })
-export class FornitoriPageModule {}
+export class FornitoriPageModule { }

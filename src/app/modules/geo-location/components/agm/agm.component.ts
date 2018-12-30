@@ -11,7 +11,7 @@ export class AgmComponent implements OnInit {
   title = 'My first AGM project';
   lat = 37.7456284;
   lng = 15.146945299999999;
-  locationChosen = false;
+  locationChoosen = false;
   /**
 latitude
 :
@@ -26,10 +26,10 @@ longitude
 
 
   }
-  chooseLocation(ev){
-  this.lat =  ev.coords.lat;
+  chooseLocation(ev) {
+    this.lat = ev.coords.lat;
     this.lng = ev.coords.lng;
-    this.locationChosen = true;
+    this.locationChoosen = true;
     console.log(ev.coords);
   }
 

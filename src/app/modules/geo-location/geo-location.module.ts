@@ -5,7 +5,8 @@ import { AgmCoreModule } from '@agm/core';
 import { GeoLocalizeComponent } from './components/geo-localize/geo-localize.component';
 import { AgmComponent } from './components/agm/agm.component';
 import { DistanceSorterPipe } from './pipes/distance-sorter.pipe';
-import {GeoService} from './services/geo-service';
+import { GeoService } from './services/geo-service';
+import {configs} from '../../configs/configs';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import {GeoService} from './services/geo-service';
 
     IonicModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyClc8roQ21e1VFTzJTS0XkG7pVA_c3SGis'
+      apiKey: configs.google.api_key
     })
   ],
   exports: [GeoLocalizeComponent, AgmComponent, DistanceSorterPipe],

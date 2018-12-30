@@ -10,7 +10,7 @@ export class SupplierModel implements ItemModelInterface {
     latitudine: string;
     longitudine: string;
     latitude: string;
-    longitude:string;
+    longitude: string;
     altitude: string;
     title: string;
     fidelity_card: string;
