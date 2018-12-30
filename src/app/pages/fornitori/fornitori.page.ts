@@ -4,6 +4,7 @@ import { CategoryModel } from 'src/app/models/CategoryModel';
 import { ItemModelInterface } from 'src/app/modules/item/models/itemModelInterface';
 import { SupplierModel } from 'src/app/models/supplierModel';
 import { Router } from '@angular/router';
+import { GeoService } from '../../modules/geo-location/services/geo-service'
 
 
 @Component({
@@ -16,11 +17,22 @@ export class FornitoriPage implements OnInit, OnChanges {
   public filterLabel: String = 'Categorie';
   public filterString: string;
   public filterFunction: (item: ItemModelInterface) => Boolean;
+  public position = {};
 
-  constructor(public suppliers: SuppliersService,
-    public router: Router) { }
+  constructor(
+    public suppliers: SuppliersService,
+    public geo: GeoService,
+    public router: Router) {
 
-  ngOnInit() {
+  }
+
+  async ngOnInit() {
+    this.geo.getPosition().then(coords => {
+      this.position = { latitude: coords.coords.latitude, longitude: coords.coords.longitude };
+
+
+      console.log('fallback', this.position);
+    });
     this.suppliers.getEntiesList().on('value', eventSuppliersListSnapshot => {
       this.SuppliersList = [];
       eventSuppliersListSnapshot.forEach(snap => {

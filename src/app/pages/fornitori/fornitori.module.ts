@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 import { ItemModule } from '../../modules/item/item.module';
+import {GeoLocationModule} from '../../modules/geo-location/geo-location.module';
+
 
 import { FornitoriPage } from './fornitori.page';
 
@@ -21,7 +23,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    ItemModule
+    ItemModule,
+    GeoLocationModule
   ],
   declarations: [FornitoriPage]
 })
