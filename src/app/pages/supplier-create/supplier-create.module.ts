@@ -7,7 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { SupplierCreatePage } from './supplier-create.page';
 import { ItemModule } from '../../modules/item/item.module';
-import {GeoLocationModule} from '../../modules/geo-location/geo-location.module';
+import { GeoLocationModule } from '../../modules/geo-location/geo-location.module';
+import { DynamicFormModule } from '../../modules/dynamic-form/dynamic-form.module';
 
 const routes: Routes = [
   {
@@ -23,8 +24,9 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
     ItemModule,
-    GeoLocationModule
+    GeoLocationModule,
+    DynamicFormModule
   ],
-  declarations: [SupplierCreatePage, ]
+  declarations: [SupplierCreatePage,]
 })
 export class SupplierCreatePageModule { }
