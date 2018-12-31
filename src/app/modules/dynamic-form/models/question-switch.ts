@@ -4,7 +4,7 @@ export class SwitchQuestion<T> extends QuestionBase<boolean> {
     controlType = 'switchBox';
     labelTrue: string;
     labelFalse: string;
-    type: string;
+    type: boolean;
 
     constructor(options: {} = {}) {
 

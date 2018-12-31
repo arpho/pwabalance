@@ -7,12 +7,14 @@ import { AgmComponent } from './components/agm/agm.component';
 import { DistanceSorterPipe } from './pipes/distance-sorter.pipe';
 import { GeoService } from './services/geo-service';
 import { configs } from './configs/configs';
+import { InputGeolocationComponent } from './components/input-geolocation/input-geolocation.component';
 
 @NgModule({
   declarations: [
     GeoLocalizeComponent,
     AgmComponent,
-    DistanceSorterPipe],
+    DistanceSorterPipe,
+    InputGeolocationComponent],
   imports: [
     CommonModule,
 
@@ -22,7 +24,7 @@ import { configs } from './configs/configs';
       apiKey: configs.google.api_key
     })
   ],
-  exports: [GeoLocalizeComponent, AgmComponent, DistanceSorterPipe],
+  exports: [GeoLocalizeComponent, AgmComponent, DistanceSorterPipe, InputGeolocationComponent],
 
 })
 export class GeoLocationModule { }
