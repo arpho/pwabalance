@@ -1,20 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { Component, OnInit, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Plugins, GeolocationOptions } from '@capacitor/core';
 const { Geolocation } = Plugins;
 import { Coordinates } from '../../models/coordinates';
+import { Input } from '@ionic/angular';
 
 @Component({
   selector: 'input-geolocation',
   templateUrl: './input-geolocation.component.html',
-  styleUrls: ['./input-geolocation.component.scss']
+  styleUrls: ['./input-geolocation.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => InputGeolocationComponent),
+    }
+  ]
 })
 export class InputGeolocationComponent implements OnInit, ControlValueAccessor {
   public location: Coordinates;
+  private disabled = false;
   private onChange: Function = (location: Coordinates) => { };
   private onTouch: Function = () => { };
-  private disabled: boolean = false;
   writeValue(value: Coordinates) {
+    // if value is undefined it fails
+    if (!value) { value = new Coordinates({ latitude: 0, longitude: 0 }); }
     this.location = new Coordinates({ latitude: value.getLatitude(), longitude: value.getLongitude() });
     this.onChange(this.location);
 
@@ -31,8 +41,6 @@ export class InputGeolocationComponent implements OnInit, ControlValueAccessor {
     const options: GeolocationOptions = {};
     options.enableHighAccuracy = true;
     const coordinates = await Geolocation.getCurrentPosition(options);
-    console.log('Current', coordinates);
-    console.log(typeof coordinates.coords.latitude);
     const location: Coordinates = new Coordinates(coordinates.coords);
     this.writeValue(location);
   }

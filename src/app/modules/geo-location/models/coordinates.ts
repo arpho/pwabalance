@@ -1,10 +1,10 @@
 export class Coordinates {
     private latitude: number;
     private longitude: number;
-    getLatitude() {
+    public getLatitude() {
         return this.latitude;
     }
-    getLongitude() {
+    public getLongitude() {
         return this.longitude;
     }
     setLatitude(latitude: string | number) {

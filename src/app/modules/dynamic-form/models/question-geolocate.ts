@@ -1,6 +1,6 @@
 import { QuestionBase } from './question-base';
 
-export class TextboxQuestion extends QuestionBase<string> {
+export class GeoLocateQuestion extends QuestionBase<string> {
     controlType = 'geobox';
     type: string;
 

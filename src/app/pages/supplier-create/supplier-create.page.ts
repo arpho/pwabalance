@@ -3,6 +3,8 @@ import { QuestionBase } from '../../modules/item/models/question-base';
 import { TextboxQuestion } from '../../modules/item/models/question-textbox';
 import { DropdownQuestion } from '../../modules/item/models/question-dropdown';
 import { SwitchQuestion } from '../../modules/item/models/question-switch';
+import { GeoLocateQuestion } from '../../modules/dynamic-form/models/question-geolocate';
+import { Coordinates } from '../../modules/geo-location/models/coordinates'
 
 
 @Component({
@@ -12,8 +14,13 @@ import { SwitchQuestion } from '../../modules/item/models/question-switch';
 })
 export class SupplierCreatePage implements OnInit {
   public questions: any;
+  public initialLocation: Coordinates;
 
   constructor() {
+    this.initialLocation = new Coordinates({
+      latitude: 0, // I have to set a value for the form 
+      longitude: 0 //  means no locatian set
+    });
     const questions: QuestionBase<any>[] = [
 
       /* new DropdownQuestion({
@@ -50,6 +57,12 @@ export class SupplierCreatePage implements OnInit {
         value: true,
         required: false,
         order: 3
+      }),
+      new GeoLocateQuestion({
+        key: 'location',
+        label: 'coordinate',
+        required: false,
+        order: 4
       })
 
     ];
