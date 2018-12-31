@@ -47,8 +47,8 @@ export class SupplierModel implements ItemModelInterface {
             Object.entries(sup.val()).forEach(e => this[e[0]] = e[1]);
             this.key = sup.key;
             this.title = this.title || this.nome; // retro compatibilità
-            this.latitude = this.latitudine;
-            this.longitude = this.longitudine;
+            this.latitude = this.latitude || this.latitudine;
+            this.longitude = this.longitude || this.longitudine;
         });
     }
 

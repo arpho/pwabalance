@@ -6,7 +6,7 @@ import { GeoLocalizeComponent } from './components/geo-localize/geo-localize.com
 import { AgmComponent } from './components/agm/agm.component';
 import { DistanceSorterPipe } from './pipes/distance-sorter.pipe';
 import { GeoService } from './services/geo-service';
-import {configs} from '../../configs/configs';
+import { configs } from './configs/configs';
 
 @NgModule({
   declarations: [
