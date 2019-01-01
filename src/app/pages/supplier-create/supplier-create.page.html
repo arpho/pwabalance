@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content padding>
-  <app-dynamic-form [questions]="questions"></app-dynamic-form>
+  <app-dynamic-form [questions]="questions" (interactiveSubmit)="filter($event)" (singleSubmit)="submit($event)"></app-dynamic-form>
 
   <ion-buttons slot="start">
     <ion-back-button></ion-back-button>

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionBase } from '../../modules/item/models/question-base';
 import { TextboxQuestion } from '../../modules/item/models/question-textbox';
-import { DropdownQuestion } from '../../modules/item/models/question-dropdown';
 import { SwitchQuestion } from '../../modules/item/models/question-switch';
 import { GeoLocateQuestion } from '../../modules/dynamic-form/models/question-geolocate';
-import { Coordinates } from '../../modules/geo-location/models/coordinates'
+import { Coordinates } from '../../modules/geo-location/models/coordinates';
 
 
 @Component({
@@ -17,6 +16,8 @@ export class SupplierCreatePage implements OnInit {
   public initialLocation: Coordinates;
 
   constructor() {
+
+
     this.initialLocation = new Coordinates({
       latitude: 0, // I have to set a value for the form 
       longitude: 0 //  means no locatian set
@@ -38,14 +39,14 @@ export class SupplierCreatePage implements OnInit {
       new TextboxQuestion({
         key: 'title',
         label: 'Nome del Fornitore',
-        value: 'Bombasto',
+        // value: 'Bombasto',
         required: true,
         order: 1
       }),
       new TextboxQuestion({
         key: 'indirizzo',
         label: 'indirizzo',
-        value: 'Bombasto',
+        // value: 'Bombasto',
         required: false,
         order: 2
       }),
@@ -73,5 +74,11 @@ export class SupplierCreatePage implements OnInit {
 
   ngOnInit() {
   }
+  filter(ev: {}) {
+    console.log('filter', ev);
+  }
 
+  submit(ev: {}) {
+    console.log('submitted', ev)
+  }
 }

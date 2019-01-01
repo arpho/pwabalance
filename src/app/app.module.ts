@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { GeoLocationModule } from './modules/geo-location/geo-location.module';
-import {DynamicFormModule} from './modules/dynamic-form/dynamic-form.module';
+import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
 
 @NgModule({
   declarations:
