@@ -41,7 +41,12 @@ export class InputGeolocationComponent implements OnInit, ControlValueAccessor {
     const options: GeolocationOptions = {};
     options.enableHighAccuracy = true;
     const coordinates = await Geolocation.getCurrentPosition(options);
-    const location: Coordinates = new Coordinates(coordinates.coords);
+    const myCoordinates = new Coordinates({
+      latitude: coordinates.coords.latitude,
+      longitude: coordinates.coords.longitude,
+      address: 'to be implemented'
+    });
+    const location: Coordinates = new Coordinates(myCoordinates);
     this.writeValue(location);
   }
 
