@@ -24,8 +24,8 @@ export class InputGeolocationComponent implements OnInit, ControlValueAccessor {
   private onTouch: Function = () => { };
   writeValue(value: Coordinates) {
     // if value is undefined it fails
-    if (!value) { value = new Coordinates({ latitude: 0, longitude: 0 }); }
-    this.location = new Coordinates({ latitude: value.getLatitude(), longitude: value.getLongitude() });
+    if (!value) { value = new Coordinates({ latitude: 0, longitude: 0, address: '' }); }
+    this.location = new Coordinates({ latitude: value.getLatitude(), longitude: value.getLongitude(), address: value.getAddress() });
     this.onChange(this.location);
 
   }

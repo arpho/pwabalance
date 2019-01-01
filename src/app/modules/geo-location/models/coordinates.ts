@@ -1,6 +1,7 @@
 export class Coordinates {
     private latitude: number;
     private longitude: number;
+    public address: string;
     public getLatitude() {
         return this.latitude;
     }
@@ -14,8 +15,12 @@ export class Coordinates {
     setLongitude(longitude: string | number) {
         this.longitude = Number(longitude);
     }
-    constructor(v: { latitude: number, longitude: number }) {
+    getAddress(): string {
+        return this.address;
+    }
+    constructor(v: { latitude: number, longitude: number, address: string }) {
         this.latitude = v.latitude;
         this.longitude = v.longitude;
+        this.address = v.address || ' to be implemented';
     }
 }

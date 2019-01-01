@@ -20,7 +20,7 @@ export class SupplierModel implements ItemModelInterface {
         nome: string,
         note: string,
         title?: string,
-        fidelity_card: string,
+        fidelity_card?: string,
         indirizzo: string,
         latitudine: string,
         altitude: string,

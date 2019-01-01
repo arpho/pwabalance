@@ -83,7 +83,6 @@ export class SupplierUpdatePage implements OnInit {
   ngOnInit() {
 
     const supplier_key = this.route.snapshot.paramMap.get('key');
-    console.log(supplier_key);
     this.currentSupplier = new SupplierModel();
     this.currentSupplier.load(supplier_key, this.suppliers);
     this.questions =
@@ -117,7 +116,11 @@ export class SupplierUpdatePage implements OnInit {
           key: 'location',
           label: 'coordinate',
           required: false,
-          value: new Coordinates({ latitude: Number(this.currentSupplier.latitude), longitude: Number(this.currentSupplier.longitude) }),
+          value: new Coordinates({
+            latitude: Number(this.currentSupplier.latitude),
+            longitude: Number(this.currentSupplier.longitude),
+            address: this.currentSupplier.indirizzo
+          }),
           order: 4
         })
 
@@ -127,11 +130,25 @@ export class SupplierUpdatePage implements OnInit {
 
 
   filter(ev: {}) {
-    console.log('filter', ev);
   }
 
-  submit(ev: {}) {
-    console.log('submitted', ev)
+  submit(ev: {
+    nome: string,
+    note: string,
+    title?: string,
+    fidelity_card?: string,
+    indirizzo: string,
+    latitudine: string,
+    altitude: string,
+    longitudine: string,
+    key: string,
+    onLine: boolean,
+
+  }) {
+    console.log('submitted', ev);
+    const supplier = new SupplierModel(ev);
+    supplier.indirizzo = ev['location']['address'];
+    console.log('nuovo fornitore', supplier);
   }
 
 
