@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 
 @Pipe({
-  name: 'distanceSorter'
+  name: 'distanceSorter',
+  pure: false
 })
 export class DistanceSorterPipe implements PipeTransform {
 

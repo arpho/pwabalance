@@ -1,19 +1,54 @@
 import { Injectable } from '@angular/core';
-import { Plugins, GeolocationOptions } from '@capacitor/core';
+import { Plugins, GeolocationOptions, GeolocationPosition } from '@capacitor/core';
 const { Geolocation } = Plugins;
 
 @Injectable({
   providedIn: 'root'
 })
 export class GeoService {
+  private timeoutExpired: boolean;
+  private oldLocation: GeolocationPosition;
 
-  constructor() { }
+
+  constructor() {
+    this.timeoutExpired = true;
+    console.log('constructor');
+  }
+  /**
+   *set a timeout 
+   @param t: number timeout in millisecs
+   @boolean: returns true when   the timeout is set, otherwise return false
+   *
+   * @param {number} t
+   * @returns
+   * @memberof GeoService
+   */
+  setTimeout(t: number) {
+
+    if (this.timeoutExpired) {
+      setTimeout(() => {
+        this.timeoutExpired = true;
+        console.log('timeout expired');
+      }, t);
+      this.timeoutExpired = false;
+      console.log('timeout set');
+      return true;
+    } else {
+      return false;
+    }
+
+
+  }
 
   async getPosition() {
 
     const options: GeolocationOptions = {};
     options.enableHighAccuracy = true;
-    const coordinates = await Geolocation.getCurrentPosition(options);
-    return coordinates;
+    if (this.setTimeout(300000)) {
+      this.oldLocation = await Geolocation.getCurrentPosition(options);
+      return this.oldLocation;
+    } else {
+      return this.oldLocation;
+    }
   }
 }
