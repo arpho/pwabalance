@@ -131,10 +131,12 @@ export class SupplierUpdatePage implements OnInit {
     note: string,
     title?: string,
     fidelity_card?: string,
-    indirizzo: string,
-    latitudine: string,
+    location: {
+      address: string,
+      latitude: number,
+      longitude: number,
+    }
     altitude: string,
-    longitudine: string,
     key: string,
     onLine: boolean,
 
@@ -143,7 +145,7 @@ export class SupplierUpdatePage implements OnInit {
     const supplier = new SupplierModel(ev);
     supplier.address = ev['location']['address'];
     console.log('nuovo fornitore', supplier);
-    console.log('fornitore serialized', supplier.serialize();
+    console.log('fornitore serialized', supplier.serialize());
   }
 
 

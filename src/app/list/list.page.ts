@@ -28,6 +28,7 @@ export class ListPage implements OnInit {
     this.items.push(this.itemFactory('fornitori', 'people', 'fornitori'));
     this.items.push(this.itemFactory('carrelli della spesa', 'cart', 'home'));
     this.items.push(this.itemFactory('grafici', 'stats', 'grafici'));
+    this.items.push(this.itemFactory('info', 'information-circle', 'grafici'));
   }
 
   itemFactory(title, icon, link) {

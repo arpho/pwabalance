@@ -29,8 +29,7 @@ export class SupplierModel implements ItemModelInterface, FirebaseObject {
             latitude: number,
             longitude: number
         }
-        altitude: string,
-        longitudine: string,
+        altitude?: string,
         key: string,
         onLine: boolean,
 

@@ -78,10 +78,12 @@ export class SupplierCreatePage implements OnInit {
     note: string,
     title?: string,
     fidelity_card?: string,
-    indirizzo: string,
-    latitudine: string,
+    location: {
+      address: string,
+      latitude: number,
+      longitude: number,
+    }
     altitude: string,
-    longitudine: string,
     key: string,
     onLine: boolean,
 

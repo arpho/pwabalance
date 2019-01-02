@@ -38,6 +38,7 @@ const routes: Routes = [
   },
   { path: 'components', loadChildren: './modules/item/components/components.module#ComponentsPageModule' },
   { path: 'pageItemsList', loadChildren: './modules/item/components/page-items-list/page-items-list.module#PageItemsListPageModule' },
+  { path: 'info', loadChildren: './info/info.module#InfoPageModule' },
 ];
 
 @NgModule({

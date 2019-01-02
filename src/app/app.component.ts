@@ -42,6 +42,11 @@ export class AppComponent {
       url: '/grafici',
       icon: 'stats'
     }
+    {
+      title: 'info',
+      url: '/info',
+      icon: 'information-circle'
+    }
   ];
 
   constructor(
