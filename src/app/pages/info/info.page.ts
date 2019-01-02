@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InfoService } from 'src/app/services/info/info.service';
 
 @Component({
   selector: 'app-info',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoPage implements OnInit {
 
-  constructor() { }
+  constructor(public info: InfoService) { }
+
+  scan() {
+    console.log('click');
+  }
 
   ngOnInit() {
+    this.info.fileRead('./manifest.json');
   }
 
 }

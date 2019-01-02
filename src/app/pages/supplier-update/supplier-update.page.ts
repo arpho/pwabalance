@@ -23,7 +23,7 @@ export class SupplierUpdatePage implements OnInit {
   constructor(
     public alertCtrl: AlertController,
     private route: ActivatedRoute,
-    public suppliers: SuppliersService,
+    public Suppliers: SuppliersService,
     public router: Router) {
 
 
@@ -32,6 +32,8 @@ export class SupplierUpdatePage implements OnInit {
       longitude: 0, //  means no locatian set
       address: 'to be implemented yet'
     });
+
+
     const questions: QuestionBase<any>[] = [
 
       /* new DropdownQuestion({
@@ -78,7 +80,7 @@ export class SupplierUpdatePage implements OnInit {
 
     const supplier_key = this.route.snapshot.paramMap.get('key');
     this.currentSupplier = new SupplierModel();
-    this.currentSupplier.load(supplier_key, this.suppliers);
+    this.currentSupplier.load(supplier_key, this.Suppliers);
     this.questions =
 
       [
@@ -102,7 +104,7 @@ export class SupplierUpdatePage implements OnInit {
           label: 'venditore online',
           labelTrue: 'venditore fa ecommerce',
           labelFalse: ' venditore tradizionale',
-          value: this.currentSupplier.onLine,
+          value: this.currentSupplier.ecommerce,
           required: false,
           order: 3
         }),
@@ -123,29 +125,19 @@ export class SupplierUpdatePage implements OnInit {
   }
 
 
+
   filter(ev: {}) {
   }
 
-  submit(ev: {
-    nome: string,
-    note: string,
-    title?: string,
-    fidelity_card?: string,
-    location: {
-      address: string,
-      latitude: number,
-      longitude: number,
-    }
-    altitude: string,
-    key: string,
-    onLine: boolean,
-
-  }) {
+  submit(ev: any) {
     console.log('submitted', ev);
     const supplier = new SupplierModel(ev);
-    supplier.address = ev['location']['address'];
+    console.log('location', ev['location']);
+    supplier.address = ev['location'];
+    supplier.key = this.currentSupplier.key;
     console.log('nuovo fornitore', supplier);
     console.log('fornitore serialized', supplier.serialize());
+    this.Suppliers.updateItem(supplier).then((item) => { console.log('updated', item); });
   }
 
 

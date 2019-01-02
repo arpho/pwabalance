@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { QuestionBase } from '../../models/question-base';
@@ -11,6 +11,7 @@ export class QuestionFormComponent implements OnInit {
   public value: any;
   @Input() question: QuestionBase<any>;
   @Input() form: FormGroup;
+
   ngOnInit() {
     this.value = this.question.value;
   }

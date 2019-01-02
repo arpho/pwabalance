@@ -1,5 +1,7 @@
 {
   "name": "pwaBalance",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

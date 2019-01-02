@@ -41,7 +41,7 @@ export class AppComponent {
       title: 'Grafici',
       url: '/grafici',
       icon: 'stats'
-    }
+    },
     {
       title: 'info',
       url: '/info',

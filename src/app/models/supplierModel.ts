@@ -17,7 +17,8 @@ export class SupplierModel implements ItemModelInterface, FirebaseObject {
     title: string;
     fidelity_card: string;
     key: string;
-    onLine: boolean;
+    ecommerce: boolean;
+    onLine: boolean; // back compatibility
     constructor(fornitore?: {
         nome: string,
         note: string,
@@ -31,7 +32,7 @@ export class SupplierModel implements ItemModelInterface, FirebaseObject {
         }
         altitude?: string,
         key: string,
-        onLine: boolean,
+        ecommerce: boolean,
 
     }) {
         this.key = fornitore && fornitore.key || '';
@@ -43,7 +44,7 @@ export class SupplierModel implements ItemModelInterface, FirebaseObject {
         this.longitude = fornitore && fornitore.location.longitude || 0;
         this.fidelity_card = fornitore && fornitore.fidelity_card || '';
         this.title = fornitore && fornitore.title || this.nome;
-        this.onLine = fornitore && fornitore.onLine || false;
+        this.ecommerce = fornitore && fornitore.ecommerce || false;
 
     }
 
@@ -51,12 +52,13 @@ export class SupplierModel implements ItemModelInterface, FirebaseObject {
     load(key, service) {
         service.getItem(key).on('value', sup => {
             Object.entries(sup.val()).forEach(e => this[e[0]] = e[1]);
-            this.key = sup.key;
+            this.key = key;
             // retro compatibilità
             this.title = this.title || this.nome;
             this.latitude = Number(this.latitude || this.latitudine);
             this.longitude = Number(this.longitude || this.longitudine);
             this.address = this.address || this.indirizzo;
+            this.ecommerce = this.ecommerce || this.onLine;
         });
     }
 
@@ -82,7 +84,7 @@ export class SupplierModel implements ItemModelInterface, FirebaseObject {
         this.note = item.note || '';
         this.latitudine = item.latitudine || '';
         this.longitudine = item.longitudine || '';
-        this.onLine = this.onLine;
+        this.ecommerce = this.ecommerce;
     }
     buildFromActiveForm(fornitore: {
         nome: FormControl,
@@ -92,7 +94,7 @@ export class SupplierModel implements ItemModelInterface, FirebaseObject {
         longitudine: FormControl,
         altitude: FormControl,
         latitudine: FormControl,
-        onLine: FormControl
+        ecommerce: FormControl
     }) {
         this.key = fornitore && fornitore.key.value || '';
         this.nome = fornitore && fornitore.nome.value || '';
@@ -101,7 +103,7 @@ export class SupplierModel implements ItemModelInterface, FirebaseObject {
         this.indirizzo = fornitore && fornitore.indirizzo.value || '';
         this.latitudine = fornitore && fornitore.latitudine.value || '';
         this.longitudine = fornitore && fornitore.longitudine.value || '';
-        this.onLine = fornitore && fornitore.onLine.value || false;
+        this.ecommerce = fornitore && fornitore.ecommerce.value || false;
         return this;
     }
 
@@ -148,10 +150,11 @@ export class SupplierModel implements ItemModelInterface, FirebaseObject {
         return {
             title: this.title,
             address: this.address,
-            onLine: this.onLine,
+            ecommerce: this.ecommerce,
             fidelity_card: this.fidelity_card,
             latitude: this.latitude,
-            longitude: this.longitude
+            longitude: this.longitude,
+            note: this.note
         };
     }
 

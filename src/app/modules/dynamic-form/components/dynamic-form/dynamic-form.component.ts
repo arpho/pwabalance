@@ -15,6 +15,8 @@ export class DynamicFormComponent implements OnInit {
   @Output() interactiveSubmit: EventEmitter<{}> = new EventEmitter();
   @Output() singleSubmit: EventEmitter<{}> = new EventEmitter();
   @Input() questions: QuestionBase<any>[] = [];
+
+
   form: FormGroup;
   payLoad = '';
 

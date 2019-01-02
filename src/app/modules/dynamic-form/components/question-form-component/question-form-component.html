@@ -12,7 +12,7 @@
       <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
     </select>
     <div *ngSwitchCase="'geobox'">
-      <input-geolocation [id]="question.key" [formControlName]="question.key"></input-geolocation>
+      <input-geolocation [id]="question.key" [address]="question.value?.adress" [formControlName]="question.key"></input-geolocation>
       <input [id]="question.key" [value]="question.value?.address" [formControlName]="question.key">
     </div>
 

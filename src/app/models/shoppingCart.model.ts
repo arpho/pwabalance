@@ -4,7 +4,7 @@ import { DiscountModel } from './discount.model';
 import { FormGroup } from '@angular/forms/src/model';
 import * as _ from 'lodash';
 import { CategoriesService } from '../services/categories/categories.service';
-import {ItemModel} from './ItemModel';
+import { ItemModel } from './ItemModel';
 
 
 
@@ -16,7 +16,7 @@ export class ShoppingCartModel {
     moneta: string;
     tassoConversione; number;
     dataAcquisto: string;
-    online: boolean;
+    ecommerce: boolean;
     sconto: { percentuale: boolean, sconto: number };
     dataAddebito: string;
     items: Array<ItemModel>;
@@ -32,7 +32,7 @@ export class ShoppingCartModel {
             this.dataAddebito = shoppingCart.dataAddebito || new Date().toISOString();
             this.totale = shoppingCart.totale || 0;
             this.moneta = shoppingCart.moneta || '€';
-            this.online = shoppingCart.online || false;
+            this.ecommerce = shoppingCart.ecommerce || false;
             this.items = shoppingCart.items || [];
             this.key = shoppingCart.key || '';
             this.note = shoppingCart.note || '';
@@ -44,7 +44,7 @@ export class ShoppingCartModel {
             this.dataAddebito = new Date().toISOString();
             this.totale = 0;
             this.moneta = '€';
-            this.online = false;
+            this.ecommerce = false;
             this.items = [];
             this.key = '';
 
@@ -61,7 +61,7 @@ export class ShoppingCartModel {
         this.items = item.items;
         this.key = item.key;
         this.moneta = item.moneta;
-        this.online = item.online;
+        this.ecommerce = item.ecommerce;
         return this;
     }
 
@@ -96,7 +96,7 @@ export class ShoppingCartModel {
         pagamentoId: string,
         dataAcquisto: string,
         dataAddebito: string,
-        online: boolean
+        ecommerce: boolean
         totale: number,
         key: string,
         items: [ItemModel],
@@ -107,7 +107,7 @@ export class ShoppingCartModel {
         this.dataAcquisto = shoppingCart.dataAcquisto || new Date().toISOString();
         this.dataAddebito = shoppingCart.dataAddebito || new Date().toISOString();
         this.totale = shoppingCart.totale || 0;
-        this.online = shoppingCart.online || false;
+        this.ecommerce = shoppingCart.ecommerce || false;
         this.items = shoppingCart.items || [];
         this.key = shoppingCart.key || '';
         this.note = shoppingCart.note || 'note';

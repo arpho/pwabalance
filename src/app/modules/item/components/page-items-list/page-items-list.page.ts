@@ -64,14 +64,12 @@ export class PageItemsListComponent implements OnInit, OnChanges {
 
   editItem(item: ItemModelInterface) {
     this.router.navigateByUrl(`${item.getEditPopup()}/${item.key}`);
-    console.log('to do ');
 
 
   }
 
   createItem() {
     this.router.navigateByUrl(`${this.service.getDummyItem().getCreatePopup()}`);
-    console.log('to do  ');
 
 
   }

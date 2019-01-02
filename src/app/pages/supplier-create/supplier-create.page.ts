@@ -5,6 +5,7 @@ import { SwitchQuestion } from '../../modules/item/models/question-switch';
 import { GeoLocateQuestion } from '../../modules/dynamic-form/models/question-geolocate';
 import { Coordinates } from '../../modules/geo-location/models/coordinates';
 import { SupplierModel } from 'src/app/models/supplierModel';
+import { SuppliersService } from 'src/app/services/suplliers/suppliers.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class SupplierCreatePage implements OnInit {
   public questions: any;
   public initialLocation: Coordinates;
 
-  constructor() {
+  constructor(public Suppliers: SuppliersService) {
 
 
     this.initialLocation = new Coordinates({
@@ -70,7 +71,9 @@ export class SupplierCreatePage implements OnInit {
   ngOnInit() {
   }
   filter(ev: {}) {
-    console.log('filter', ev);
+  }
+
+  setForm(ev: {}) {
   }
 
   submit(ev: {
@@ -85,14 +88,12 @@ export class SupplierCreatePage implements OnInit {
     }
     altitude: string,
     key: string,
-    onLine: boolean,
+    ecommerce: boolean,
 
   }) {
-    console.log('submitted', ev);
     const supplier = new SupplierModel(ev);
     supplier.address = ev['location']['address'];
-    console.log('nuovo fornitore', supplier);
-    console.log('fornitore serialized', supplier.serialize());
+    this.Suppliers.createItem(supplier).then(item => { console.log('created', item, item.key) });
 
   }
 }
