@@ -15,7 +15,7 @@ export interface ItemModelInterface {
     getValue3(): Value;
     getValue4(): Value;
     getEditPopup(item?: ItemModelInterface, service?: ItemServiceInterface): any;
-    getCreatePopup(service?: ItemServiceInterface): string|any;
+    getCreatePopup(service?: ItemServiceInterface): string | any;
     getFilterPopup(next: (any) => any);
 
     /**ritorna l'etichetta e il valore da visualizzare del campo aggregato **/

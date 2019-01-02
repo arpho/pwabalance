@@ -53,13 +53,6 @@ export class SupplierUpdatePage implements OnInit {
         required: true,
         order: 1
       }),
-      new TextboxQuestion({
-        key: 'indirizzo',
-        label: 'indirizzo',
-        value: 'Bombasto',
-        required: false,
-        order: 2
-      }),
       new SwitchQuestion({
         key: 'ecommerce',
         label: 'venditore online',
@@ -148,8 +141,9 @@ export class SupplierUpdatePage implements OnInit {
   }) {
     console.log('submitted', ev);
     const supplier = new SupplierModel(ev);
-    supplier.indirizzo = ev['location']['address'];
+    supplier.address = ev['location']['address'];
     console.log('nuovo fornitore', supplier);
+    console.log('fornitore serialized', supplier.serialize();
   }
 
 

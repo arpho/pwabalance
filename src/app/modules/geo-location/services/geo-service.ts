@@ -12,7 +12,6 @@ export class GeoService {
 
   constructor() {
     this.timeoutExpired = true;
-    console.log('constructor');
   }
   /**
    *set a timeout 
@@ -28,10 +27,8 @@ export class GeoService {
     if (this.timeoutExpired) {
       setTimeout(() => {
         this.timeoutExpired = true;
-        console.log('timeout expired');
       }, t);
       this.timeoutExpired = false;
-      console.log('timeout set');
       return true;
     } else {
       return false;

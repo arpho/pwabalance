@@ -2,8 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 
 @Pipe({
-  name: 'distanceSorter',
-  pure: false
+  name: 'distanceSorter'
 })
 export class DistanceSorterPipe implements PipeTransform {
 
@@ -24,8 +23,7 @@ export class DistanceSorterPipe implements PipeTransform {
         return this.distance(a.latitudine, a.longitudine, location.latitude, location.longitude) -
           this.distance(b.latitude, b.longitude, location.latitude, location.longitude);
       });
-    }
-    else {
+    } else {
       return value;
     }
   }

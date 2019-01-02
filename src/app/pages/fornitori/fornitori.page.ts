@@ -29,7 +29,6 @@ export class FornitoriPage implements OnInit, OnChanges {
   async ngOnInit() {
     this.geo.getPosition().then(coords => {
       this.position = { latitude: coords.coords.latitude, longitude: coords.coords.longitude };
-      console.log('fallback', this.position);
     });
     this.suppliers.getEntiesList().on('value', eventSuppliersListSnapshot => {
       this.SuppliersList = [];
@@ -52,7 +51,6 @@ export class FornitoriPage implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     this.geo.getPosition().then(coords => {
       this.position = { latitude: coords.coords.latitude, longitude: coords.coords.longitude };
-      console.log('fallback', this.position);
     });
 
   }

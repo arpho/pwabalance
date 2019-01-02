@@ -4,6 +4,7 @@ import { TextboxQuestion } from '../../modules/item/models/question-textbox';
 import { SwitchQuestion } from '../../modules/item/models/question-switch';
 import { GeoLocateQuestion } from '../../modules/dynamic-form/models/question-geolocate';
 import { Coordinates } from '../../modules/geo-location/models/coordinates';
+import { SupplierModel } from 'src/app/models/supplierModel';
 
 
 @Component({
@@ -44,13 +45,6 @@ export class SupplierCreatePage implements OnInit {
         required: true,
         order: 1
       }),
-      new TextboxQuestion({
-        key: 'indirizzo',
-        label: 'indirizzo',
-        // value: 'Bombasto',
-        required: false,
-        order: 2
-      }),
       new SwitchQuestion({
         key: 'ecommerce',
         label: 'venditore online',
@@ -79,7 +73,24 @@ export class SupplierCreatePage implements OnInit {
     console.log('filter', ev);
   }
 
-  submit(ev: {}) {
-    console.log('submitted', ev)
+  submit(ev: {
+    nome: string,
+    note: string,
+    title?: string,
+    fidelity_card?: string,
+    indirizzo: string,
+    latitudine: string,
+    altitude: string,
+    longitudine: string,
+    key: string,
+    onLine: boolean,
+
+  }) {
+    console.log('submitted', ev);
+    const supplier = new SupplierModel(ev);
+    supplier.address = ev['location']['address'];
+    console.log('nuovo fornitore', supplier);
+    console.log('fornitore serialized', supplier.serialize());
+
   }
 }

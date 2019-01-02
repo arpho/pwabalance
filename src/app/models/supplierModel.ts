@@ -3,14 +3,16 @@ import { ItemModelInterface, Genere } from '../modules/item/models/itemModelInte
 import { ItemFilterOPtions } from '../modules/item/models/ItemFIlterOptions';
 import { ItemServiceInterface } from '../modules/item/models/ItemServiceInterface';
 import { Value } from '../modules/item/models/value';
-export class SupplierModel implements ItemModelInterface {
+import { FirebaseObject } from '../models/firebaseObject';
+export class SupplierModel implements ItemModelInterface, FirebaseObject {
     nome: string;
     note: string;
     indirizzo: string;
+    address: string;
     latitudine: string;
     longitudine: string;
-    latitude: string;
-    longitude: string;
+    latitude: number;
+    longitude: number;
     altitude: string;
     title: string;
     fidelity_card: string;
@@ -21,8 +23,12 @@ export class SupplierModel implements ItemModelInterface {
         note: string,
         title?: string,
         fidelity_card?: string,
-        indirizzo: string,
-        latitudine: string,
+        location: {
+
+            address: string,
+            latitude: number,
+            longitude: number
+        }
         altitude: string,
         longitudine: string,
         key: string,
@@ -33,12 +39,13 @@ export class SupplierModel implements ItemModelInterface {
         this.nome = fornitore && fornitore.nome || '';
         this.note = fornitore && fornitore.note || '';
         this.altitude = fornitore && fornitore.altitude || '';
-        this.indirizzo = fornitore && fornitore.indirizzo || '';
-        this.latitudine = fornitore && fornitore.latitudine || '';
-        this.longitudine = fornitore && fornitore.longitudine || '';
+        this.address = fornitore && fornitore.location.address || '';
+        this.latitude = fornitore && fornitore.location.latitude || 0;
+        this.longitude = fornitore && fornitore.location.longitude || 0;
         this.fidelity_card = fornitore && fornitore.fidelity_card || '';
         this.title = fornitore && fornitore.title || this.nome;
         this.onLine = fornitore && fornitore.onLine || false;
+
     }
 
 
@@ -46,9 +53,11 @@ export class SupplierModel implements ItemModelInterface {
         service.getItem(key).on('value', sup => {
             Object.entries(sup.val()).forEach(e => this[e[0]] = e[1]);
             this.key = sup.key;
-            this.title = this.title || this.nome; // retro compatibilità
-            this.latitude = this.latitude || this.latitudine;
-            this.longitude = this.longitude || this.longitudine;
+            // retro compatibilità
+            this.title = this.title || this.nome;
+            this.latitude = Number(this.latitude || this.latitudine);
+            this.longitude = Number(this.longitude || this.longitudine);
+            this.address = this.address || this.indirizzo;
         });
     }
 
@@ -137,7 +146,14 @@ export class SupplierModel implements ItemModelInterface {
 
 
     serialize() {
-        return { key: this.key, title: this.title };
+        return {
+            title: this.title,
+            address: this.address,
+            onLine: this.onLine,
+            fidelity_card: this.fidelity_card,
+            latitude: this.latitude,
+            longitude: this.longitude
+        };
     }
 
     getEditPopup() {

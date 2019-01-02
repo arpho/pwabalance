@@ -2,6 +2,7 @@ export class Coordinates {
     public latitude: number;
     public longitude: number;
     public address: string;
+
     public getLatitude() {
         return this.latitude;
     }

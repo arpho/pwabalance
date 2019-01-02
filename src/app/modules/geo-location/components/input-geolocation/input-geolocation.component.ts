@@ -22,11 +22,15 @@ export class InputGeolocationComponent implements OnInit, ControlValueAccessor {
   private disabled = false;
   private onChange: Function = (location: Coordinates) => { };
   private onTouch: Function = () => { };
-  writeValue(value: Coordinates) {
+
+  writeValue(value) {
+    value = value || new Coordinates({ latitude: 0, longitude: 0, address: '' });
+    console.log('writing ', value);
     // if value is undefined it fails
-    if (!value) { value = new Coordinates({ latitude: 0, longitude: 0, address: '' }); }
+    if (!value) { this.location = new Coordinates({ latitude: 0, longitude: 0, address: '' }); }
     this.location = new Coordinates({ latitude: value.getLatitude(), longitude: value.getLongitude(), address: value.getAddress() });
     this.onChange(this.location);
+    console.log('written location', this.location);
 
   }
 
@@ -38,15 +42,18 @@ export class InputGeolocationComponent implements OnInit, ControlValueAccessor {
   }
 
   async geolocalize() {
+    console.log('geolocalizing');
     const options: GeolocationOptions = {};
     options.enableHighAccuracy = true;
     const coordinates = await Geolocation.getCurrentPosition(options);
+    console.log('localized', coordinates);
     const myCoordinates = new Coordinates({
       latitude: coordinates.coords.latitude,
       longitude: coordinates.coords.longitude,
       address: 'to be implemented'
     });
     const location: Coordinates = new Coordinates(myCoordinates);
+    console.log('setting location', location);
     this.writeValue(location);
   }
 
