@@ -51,7 +51,7 @@ export class SupplierModel implements ItemModelInterface, FirebaseObject {
 
     load(key, service) {
         service.getItem(key).on('value', sup => {
-            console.log('loading', sup.val())
+
             const loader = ([key, value]) => { this[key] = value; };
             Object.entries(sup.val()).forEach(loader);
             this.key = key;
@@ -61,7 +61,6 @@ export class SupplierModel implements ItemModelInterface, FirebaseObject {
             this.longitude = Number(this.longitude || this.longitudine);
             this.address = this.address || this.indirizzo;
             this.ecommerce = this.ecommerce || this.onLine;
-            console.log('loaded', this);
         });
     }
 

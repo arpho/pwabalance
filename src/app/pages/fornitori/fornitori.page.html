@@ -14,6 +14,7 @@
 </ion-header>
 
 <ion-content padding>
-  <app-page-items-list [items_list]="SuppliersList|distanceSorter:position" [service]="suppliers"></app-page-items-list>
+  <app-dynamic-form [questions]="filterFields" (interactiveSubmit)="filter($event)"></app-dynamic-form>
+  <app-page-items-list [items_list]="SuppliersList|distanceSorter:position" [service]="suppliers" [filterFunction]="filterFunction"></app-page-items-list>
 
 </ion-content>

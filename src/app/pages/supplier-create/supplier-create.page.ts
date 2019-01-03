@@ -51,7 +51,6 @@ export class SupplierCreatePage implements OnInit {
         label: 'venditore online',
         labelTrue: 'venditore fa ecommerce',
         labelFalse: ' venditore tradizionale',
-        value: true,
         required: false,
         order: 3
       }),

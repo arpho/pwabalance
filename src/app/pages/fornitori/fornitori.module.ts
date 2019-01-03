@@ -9,6 +9,7 @@ import { GeoLocationModule } from '../../modules/geo-location/geo-location.modul
 
 
 import { FornitoriPage } from './fornitori.page';
+import { DynamicFormModule } from 'src/app/modules/dynamic-form/dynamic-form.module';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
     ItemModule,
-    GeoLocationModule
+    GeoLocationModule,
+    DynamicFormModule
   ],
   declarations: [FornitoriPage]
 })
