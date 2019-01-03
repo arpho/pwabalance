@@ -35,7 +35,7 @@ export class ItemsListComponent implements OnInit, OnChanges {
     slide.close();
     const element = this.service.getDummyItem().getElement();
     const alert = await this.alertCtrl.create({
-      message: ` vuoi deavero cancellare quest${element.genere} ${element.element}?(${item.title})`,
+      message: ` vuoi davvero cancellare quest${element.genere} ${element.element}?(${item.title})`,
       buttons: [
         {
           text: 'Annulla',

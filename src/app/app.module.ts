@@ -17,6 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { GeoLocationModule } from './modules/geo-location/geo-location.module';
 import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations:
@@ -42,7 +44,8 @@ import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })

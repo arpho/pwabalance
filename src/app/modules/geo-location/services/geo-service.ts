@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Plugins, GeolocationOptions, GeolocationPosition } from '@capacitor/core';
+import { HttpClient } from '@angular/common/http';
+import { configs } from '../configs/configs';
+
 const { Geolocation } = Plugins;
 
 @Injectable({
@@ -10,8 +13,19 @@ export class GeoService {
   private oldLocation: GeolocationPosition;
 
 
-  constructor() {
+  constructor(public http: HttpClient) {
     this.timeoutExpired = true;
+  }
+
+
+  makeUrl(lat, long) {
+    return 'https://maps.googleapis.com/maps/api/geocode/json?latlng='
+      .concat(lat).concat(',').concat(long).concat('&key=').concat(configs.google.api_key);
+  }
+
+  inverseGeoLocation(lat, long) {
+    const url = this.makeUrl(lat, long);
+    return this.http.get(url);
   }
   /**
    *set a timeout 

@@ -115,7 +115,7 @@ export class SupplierUpdatePage implements OnInit {
           value: new Coordinates({
             latitude: Number(this.currentSupplier.latitude),
             longitude: Number(this.currentSupplier.longitude),
-            address: this.currentSupplier.indirizzo
+            address: this.currentSupplier.address || this.currentSupplier.indirizzo
           }),
           order: 4
         })

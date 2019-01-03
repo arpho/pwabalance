@@ -1,9 +1,11 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
+import { Component, OnInit, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Plugins, GeolocationOptions } from '@capacitor/core';
+import { Plugins, GeolocationOptions, GeolocationPosition } from '@capacitor/core';
 const { Geolocation } = Plugins;
 import { Coordinates } from '../../models/coordinates';
-import { Input } from '@angular/core';
+import { GeoService } from '../../services/geo-service';
+import { AlertController } from '@ionic/angular';
+import { AlertPromise } from 'selenium-webdriver';
 
 @Component({
   selector: 'input-geolocation',
@@ -21,8 +23,16 @@ export class InputGeolocationComponent implements OnInit, ControlValueAccessor {
   public location: Coordinates;
   private disabled = false;
   @Input() address: string;
+  selectedAddress: any;
+  testRadioOpen = false;
   private onChange: Function = (location: Coordinates) => { };
   private onTouch: Function = () => { };
+
+
+  constructor(
+    public service: GeoService,
+    private alertCtrl: AlertController
+  ) { }
 
   writeValue(value) {
     value = value || new Coordinates({ latitude: 0, longitude: 0, address: '' });
@@ -38,11 +48,45 @@ export class InputGeolocationComponent implements OnInit, ControlValueAccessor {
   registerOnTouched(fn) {
     this.onTouch = fn;
   }
+  async promptAddress(addressList: [string], coordinates: GeolocationPosition) {
+    console.log('alerting')
+    const alert = await this.alertCtrl.create({
+      header: 'Low battery',
+      subHeader: '10% of battery remaining',
+      buttons: ['Dismiss']
+    });
+    alert.header = 'indirizzi disponibili';
+    const inputs = [];
+    const inputFactory = (address: string) => {
+      inputs.push({ type: 'radio', label: address, value: address });
+    };
+    addressList.forEach(inputFactory);
+    alert.inputs = inputs;
+    alert.buttons = [{
+      text: 'Ok',
+      handler: (data: any) => {
+        console.log('Radio data:', data);
+        this.testRadioOpen = false;
+        this.selectedAddress = data;
+        this.writeValue(new Coordinates({ latitude: coordinates.coords.latitude, longitude: coordinates.coords.longitude, address: data }));
+      }
+    }
+    ];
+    alert.present();
+  }
 
   async geolocalize() {
+    console.log('geolocalizing')
     const options: GeolocationOptions = {};
     options.enableHighAccuracy = true;
+
     const coordinates = await Geolocation.getCurrentPosition(options);
+    this.service.inverseGeoLocation(coordinates.coords.latitude, coordinates.coords.longitude).subscribe((v: {}) => {
+      const address = v['results'].map(item => item['formatted_address']);
+      const out = this.promptAddress(address, coordinates);
+    })
+
+
     const myCoordinates = new Coordinates({
       latitude: coordinates.coords.latitude,
       longitude: coordinates.coords.longitude,

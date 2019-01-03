@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoService } from 'src/app/services/info/info.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-info',
@@ -8,14 +9,13 @@ import { InfoService } from 'src/app/services/info/info.service';
 })
 export class InfoPage implements OnInit {
 
-  constructor(public info: InfoService) { }
+  constructor(public info: InfoService, public alertCtrl: AlertController) { }
 
   scan() {
     console.log('click');
   }
 
   ngOnInit() {
-    this.info.fileRead('./manifest.json');
   }
 
 }

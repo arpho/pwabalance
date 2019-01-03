@@ -8,6 +8,7 @@ import { DistanceSorterPipe } from './pipes/distance-sorter.pipe';
 import { GeoService } from './services/geo-service';
 import { configs } from './configs/configs';
 import { InputGeolocationComponent } from './components/input-geolocation/input-geolocation.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { InputGeolocationComponent } from './components/input-geolocation/input-
     IonicModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: configs.google.api_key
-    })
+    }),
+    HttpClientModule
   ],
   exports: [GeoLocalizeComponent, AgmComponent, DistanceSorterPipe, InputGeolocationComponent],
 
