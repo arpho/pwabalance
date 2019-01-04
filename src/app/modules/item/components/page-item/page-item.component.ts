@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ItemComponent } from '../item/item.component';
 import { AlertController } from '@ionic/angular';
 import { ItemModelInterface } from '../../models/itemModelInterface';
@@ -7,6 +7,7 @@ import { ItemModelInterface } from '../../models/itemModelInterface';
   selector: 'app-page-item',
   templateUrl: './page-item.page.html',
   styleUrls: ['./page-item.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageItemComponent extends ItemComponent implements OnInit {
   @Input() Item: ItemModelInterface;

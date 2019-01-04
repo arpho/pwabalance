@@ -1,4 +1,4 @@
-import { Component, OnInit, forwardRef, Input } from '@angular/core';
+import { Component, OnInit, forwardRef, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Plugins, GeolocationOptions, GeolocationPosition } from '@capacitor/core';
 const { Geolocation } = Plugins;
@@ -11,6 +11,7 @@ import { AlertPromise } from 'selenium-webdriver';
   selector: 'input-geolocation',
   templateUrl: './input-geolocation.component.html',
   styleUrls: ['./input-geolocation.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -49,13 +50,12 @@ export class InputGeolocationComponent implements OnInit, ControlValueAccessor {
     this.onTouch = fn;
   }
   async promptAddress(addressList: [string], coordinates: GeolocationPosition) {
-    console.log('alerting')
     const alert = await this.alertCtrl.create({
-      header: 'Low battery',
-      subHeader: '10% of battery remaining',
-      buttons: ['Dismiss']
+      header: 'Seleziona l\'indirizzo',
+      subHeader: 'indirizzi localizzati',
+      buttons: ['Dismiss'],
+      cssClass: 'custom-alert'
     });
-    alert.header = 'indirizzi disponibili';
     const inputs = [];
     const inputFactory = (address: string) => {
       inputs.push({ type: 'radio', label: address, value: address });
@@ -65,7 +65,6 @@ export class InputGeolocationComponent implements OnInit, ControlValueAccessor {
     alert.buttons = [{
       text: 'Ok',
       handler: (data: any) => {
-        console.log('Radio data:', data);
         this.testRadioOpen = false;
         this.selectedAddress = data;
         this.writeValue(new Coordinates({ latitude: coordinates.coords.latitude, longitude: coordinates.coords.longitude, address: data }));
@@ -76,7 +75,6 @@ export class InputGeolocationComponent implements OnInit, ControlValueAccessor {
   }
 
   async geolocalize() {
-    console.log('geolocalizing')
     const options: GeolocationOptions = {};
     options.enableHighAccuracy = true;
 

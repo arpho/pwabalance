@@ -36,9 +36,21 @@ const routes: Routes = [
     path: 'supplierCreate', loadChildren: './pages/supplier-create/supplier-create.module#SupplierCreatePageModule',
     canActivate: [AuthGuard]
   },
-  { path: 'components', loadChildren: './modules/item/components/components.module#ComponentsPageModule' },
-  { path: 'pageItemsList', loadChildren: './modules/item/components/page-items-list/page-items-list.module#PageItemsListPageModule' },
+  {
+    path: 'pageItemsList', loadChildren: './modules/item/components/page-items-list/page-items-list.module#PageItemsListPageModule',
+    canActivate: [AuthGuard]
+  },
   { path: 'info', loadChildren: './pages/info/info.module#InfoPageModule' },
+  {
+    path: 'shoppingKartUpdate',
+    loadChildren: './pages/shoppingKartUpdate/shopping-kart-update/shopping-kart-update.module#ShoppingKartUpdatePageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'shoppingKartCreate',
+    loadChildren: './pages/shoppingKartCreate/shopping-kart-create/shopping-kart-create.module#ShoppingKartCreatePageModule',
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

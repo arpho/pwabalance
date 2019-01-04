@@ -5,14 +5,22 @@ import { FormGroup } from '@angular/forms/src/model';
 import * as _ from 'lodash';
 import { CategoriesService } from '../services/categories/categories.service';
 import { ItemModel } from './ItemModel';
+import { FirebaseObject } from './firebaseObject'
+import { PaymentsModel } from './paymentModel';
+import { ItemServiceInterface } from '../modules/item/models/ItemServiceInterface';
+import { ItemModelInterface, Genere } from '../modules/item/models/itemModelInterface';
+import { Value } from '../modules/item/models/value';
 
 
 
 
-export class ShoppingCartModel {
-    fornitoreId: string;
+export class ShoppingKartModel implements FirebaseObject, ItemModelInterface {
+    supplyerId: string;
     totale: number;
-    pagamentoId: string;
+    title: string;
+    paymentId: string;
+    pagamento: PaymentsModel;
+    note: string;
     moneta: string;
     tassoConversione; number;
     dataAcquisto: string;
@@ -21,13 +29,11 @@ export class ShoppingCartModel {
     dataAddebito: string;
     items: Array<ItemModel>;
     key: string;
-    note: string;
     constructor(shoppingCart?: any) {
         if (shoppingCart) {
             this.sconto = shoppingCart.sconto ? new DiscountModel(shoppingCart.sconto.percentuale,
                 shoppingCart.sconto.sconto, shoppingCart.sconto.nota) : new DiscountModel();
-            this.fornitoreId = shoppingCart.fornitoreId || '';
-            this.pagamentoId = shoppingCart.pagamentoId || '';
+            this.supplyerId = shoppingCart.supplyerId || '';
             this.dataAcquisto = shoppingCart.dataAcquisto || new Date().toISOString();
             this.dataAddebito = shoppingCart.dataAddebito || new Date().toISOString();
             this.totale = shoppingCart.totale || 0;
@@ -37,8 +43,8 @@ export class ShoppingCartModel {
             this.key = shoppingCart.key || '';
             this.note = shoppingCart.note || '';
         } else {
-            this.fornitoreId = '';
-            this.pagamentoId = '';
+            this.supplyerId = '';
+            this.paymentId = '';
             this.sconto = new DiscountModel();
             this.dataAcquisto = new Date().toISOString();
             this.dataAddebito = new Date().toISOString();
@@ -51,9 +57,88 @@ export class ShoppingCartModel {
         }
     }
 
+    getTitle() {
+        const title = new Value();
+        title.label = 'titolo';
+        title.value = this.title;
+        return title;
+    }
+
+    getElement() {
+        const genere: Genere = 'o';
+        return { element: 'carrello della spesa', genere: genere };
+    }
+
+    getAggregate() {
+        const value = new Value();
+        value.label = 'spesa complessiva';
+        value.value = ' to be implented';
+        return value;
+    }
+
+    aggregateAction() { }
+
+    getNote() {
+        const value = new Value();
+        value.label = 'note';
+        value.value = this.note;
+        return value;
+    }
+
+    getValue2() {
+        const title = new Value();
+        title.label = 'value2';
+        title.value = 'to be implemented';
+        return title;
+    }
+
+    getValue3() {
+        const title = new Value();
+        title.label = 'value3';
+        title.value = 'to be implemented';
+        return title;
+    }
+
+    getValue4() {
+        const title = new Value();
+        title.label = 'value4';
+        title.value = 'to be implemented';
+        return title;
+    }
+
+
+    load(chiave: string, service: ItemServiceInterface) {
+        service.getItem(chiave).on('value', (kart => {
+            const loader = ([key, value]) => { this[key] = value; };
+            kart.val().entries().forEach(element => {
+                loader(element);
+            });
+        }));
+        console.log('loaded', this);
+    }
+
+    getFilterPopup() { }
+
+    serialize() {
+        return {
+            'title': this.title,
+            'note': this.note,
+            'paymentId': this.paymentId,
+            'dataAcquisto': this.dataAcquisto,
+            'dataAddebito': this.dataAddebito
+        };
+    }
+
+    getCreatePopup() {
+        return 'shoppingKartCreate';
+    }
+
+    getEditPopup() {
+        return 'shoppingKartCreate';
+    }
+
     buildFrom(item: any) {
-        this.fornitoreId = item.fornitoreId;
-        this.pagamentoId = item.pagamentoId;
+        this.supplyerId = item.supplyerId;
         this.dataAcquisto = item.dataAcquisto;
         this.sconto = item.sconto;
         this.note = item.note;
@@ -92,7 +177,7 @@ export class ShoppingCartModel {
     }
 
     build(shoppingCart: {
-        fornitoreId: string,
+        supplyerId: string,
         pagamentoId: string,
         dataAcquisto: string,
         dataAddebito: string,
@@ -102,8 +187,7 @@ export class ShoppingCartModel {
         items: [ItemModel],
         note?: string
     }) {
-        this.fornitoreId = shoppingCart.fornitoreId || '';
-        this.pagamentoId = shoppingCart.pagamentoId || '';
+        this.supplyerId = shoppingCart.supplyerId || '';
         this.dataAcquisto = shoppingCart.dataAcquisto || new Date().toISOString();
         this.dataAddebito = shoppingCart.dataAddebito || new Date().toISOString();
         this.totale = shoppingCart.totale || 0;

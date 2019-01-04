@@ -3,6 +3,8 @@ import * as firebase from 'firebase';
 import { ItemModelInterface } from './itemModelInterface';
 export interface ItemServiceInterface {
 
+
+
     /**get one item from firebase
      * @param key:string
      * @returns firebase.database reference **/
@@ -22,4 +24,6 @@ export interface ItemServiceInterface {
     getDummyItem(): ItemModelInterface;
     /**crea un item in firebase  */
     createItem(item: ItemModelInterface): firebase.database.ThenableReference;
+
+    getEntitiesList(): firebase.database.Reference;
 }

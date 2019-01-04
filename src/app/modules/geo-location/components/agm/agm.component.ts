@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
 
 @Component({
   selector: 'my-agm-map',
   templateUrl: './agm.component.html',
-  styleUrls: ['./agm.component.scss']
+  styleUrls: ['./agm.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AgmComponent implements OnInit {
 

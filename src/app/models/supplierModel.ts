@@ -166,7 +166,6 @@ export class SupplierModel implements ItemModelInterface, FirebaseObject {
     }
 
     getCreatePopup() {
-        const item = new SupplierModel();
 
         return 'supplierCreate';
     }

@@ -24,7 +24,7 @@ export class CategoriePage implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.categories.getCategoriesList().on('value', eventCategoriesListSnapshot => {
+    this.categories.getEntitiesList().on('value', eventCategoriesListSnapshot => {
       this.CategoriesList = [];
       eventCategoriesListSnapshot.forEach(snap => {
         const category = new CategoryModel();
@@ -35,7 +35,7 @@ export class CategoriePage implements OnInit, OnChanges {
   }
   ionViewDidLoad() {
     console.log('loading categories');
-    this.categories.getCategoriesList().on('value', eventCategoriesListSnapshot => {
+    this.categories.getEntitiesList().on('value', eventCategoriesListSnapshot => {
       this.CategoriesList = [];
       eventCategoriesListSnapshot.forEach(snap => {
         console.log(snap.val());

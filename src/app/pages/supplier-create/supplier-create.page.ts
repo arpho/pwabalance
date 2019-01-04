@@ -6,6 +6,8 @@ import { GeoLocateQuestion } from '../../modules/dynamic-form/models/question-ge
 import { Coordinates } from '../../modules/geo-location/models/coordinates';
 import { SupplierModel } from 'src/app/models/supplierModel';
 import { SuppliersService } from 'src/app/services/suplliers/suppliers.service';
+import { Location } from '@angular/common';
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -16,8 +18,13 @@ import { SuppliersService } from 'src/app/services/suplliers/suppliers.service';
 export class SupplierCreatePage implements OnInit {
   public questions: any;
   public initialLocation: Coordinates;
+  public showSpinner = false;
+  public title = 'Nuovo fornitore';
 
-  constructor(public Suppliers: SuppliersService) {
+
+  constructor(public Suppliers: SuppliersService,
+    public location: Location,
+    public toastCtrl: ToastController) {
 
 
     this.initialLocation = new Coordinates({
@@ -90,9 +97,20 @@ export class SupplierCreatePage implements OnInit {
     ecommerce: boolean,
 
   }) {
+    this.showSpinner = true;
     const supplier = new SupplierModel(ev);
     supplier.address = ev['location']['address'];
-    this.Suppliers.createItem(supplier).then(item => { console.log('created', item, item.key) });
+    this.Suppliers.createItem(supplier).then(async item => {
+      console.log('created', item, item.key);
+      this.showSpinner = false;
+      const toast = await this.toastCtrl.create({
+        message: `fornitore ${supplier.title} creato correttamente`,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+      this.location.back();
+    });
 
   }
 }

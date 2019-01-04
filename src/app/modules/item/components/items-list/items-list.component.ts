@@ -2,7 +2,6 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, ChangeDetectionStra
 import { ItemModelInterface } from '../../models/itemModelInterface';
 import { AlertController, Item } from '@ionic/angular';
 import { ItemServiceInterface } from '../../models/ItemServiceInterface';
-import { delay } from 'q';
 
 @Component({
   selector: 'my-items-list',
@@ -55,13 +54,6 @@ export class ItemsListComponent implements OnInit, OnChanges {
   }
 
   async showFilter() {
-    const next = (filterFunction: (item: ItemModelInterface) => boolean) => {
-      this.filterFunction = filterFunction;
-    };
-
-    const popup = this.dummyItem.getFilterPopup(next);
-    const alert = await this.alertCtrl.create(popup);
-    await alert.present();
   }
 
   ngOnChanges(changes: SimpleChanges) {

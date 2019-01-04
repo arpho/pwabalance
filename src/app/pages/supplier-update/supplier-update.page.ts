@@ -8,6 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SuppliersService } from '../../services/suplliers/suppliers.service';
 import { AlertController } from '@ionic/angular';
 import { SupplierModel } from 'src/app/models/supplierModel';
+import { Location } from '@angular/common';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-supplier-update',
@@ -19,12 +21,16 @@ export class SupplierUpdatePage implements OnInit {
   public supplier_key: string;
   public currentSupplier: SupplierModel;
   public initialLocation: Coordinates;
+  public showSpinner = false;
+  public title = '';
 
   constructor(
+    public toastCtrl: ToastController,
     public alertCtrl: AlertController,
     private route: ActivatedRoute,
     public Suppliers: SuppliersService,
-    public router: Router) {
+    public router: Router,
+    public location: Location) {
 
 
     this.initialLocation = new Coordinates({
@@ -81,6 +87,7 @@ export class SupplierUpdatePage implements OnInit {
     const supplier_key = this.route.snapshot.paramMap.get('key');
     this.currentSupplier = new SupplierModel();
     this.currentSupplier.load(supplier_key, this.Suppliers);
+    this.title = `modifca ${this.currentSupplier.title}`;
     this.questions =
 
       [
@@ -129,15 +136,26 @@ export class SupplierUpdatePage implements OnInit {
   filter(ev: {}) {
   }
 
-  submit(ev: any) {
-    console.log('submitted', ev);
+  async submit(ev: any) {
+    this.showSpinner = true;
+    // console.log('submitted', ev);
     const supplier = new SupplierModel(ev);
+    console.log('fornitore non modificato', this.currentSupplier);
     console.log('location', ev['location']);
     supplier.address = ev['location'];
     supplier.key = this.currentSupplier.key;
     console.log('nuovo fornitore', supplier);
     console.log('fornitore serialized', supplier.serialize());
-    this.Suppliers.updateItem(supplier).then((item) => { console.log('updated', item); });
+    this.Suppliers.updateItem(supplier).then(async (item) => {
+      this.showSpinner = false;
+      const toast = await this.toastCtrl.create({
+        message: 'fornitore modificato correttamente',
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+      this.location.back();
+    });
   }
 
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, AbstractControl, Validators, FormControl } from '@angular/forms';
 
 import { QuestionBase } from '../../models/question-base';
@@ -8,6 +8,7 @@ import { QuestionControlService } from '../../services/question-control.service'
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [QuestionControlService],
 })
 

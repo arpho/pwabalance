@@ -6,7 +6,8 @@ import { Validators, FormGroup, FormControl, FormBuilder, AbstractControl } from
 @Component({
   selector: 'item-field-filter',
   templateUrl: './item-field-filter.component.html',
-  styleUrls: ['./item-field-filter.component.scss']
+  styleUrls: ['./item-field-filter.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemFieldFilterComponent {
   public field;

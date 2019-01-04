@@ -44,7 +44,7 @@ export class CategoriesService implements ItemServiceInterface {
 
   }
 
-  getCategoriesList(): firebase.database.Reference {
+  getEntitiesList(): firebase.database.Reference {
     return this.categoriesListRef;
   }
 

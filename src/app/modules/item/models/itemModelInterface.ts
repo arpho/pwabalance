@@ -16,14 +16,11 @@ export interface ItemModelInterface {
     getValue4(): Value;
     getEditPopup(item?: ItemModelInterface, service?: ItemServiceInterface): any;
     getCreatePopup(service?: ItemServiceInterface): string | any;
-    getFilterPopup(next: (any) => any);
 
     /**ritorna l'etichetta e il valore da visualizzare del campo aggregato **/
     getAggregate(): Value;
     aggregateAction(): any | void;
-    showDetail(): any | void;
     serialize();
-    getFilterParams(): ItemFilterOPtions[];
     getElement(): { element: string, genere: Genere };
 
     /**ritorna il nome del tipo di elemento

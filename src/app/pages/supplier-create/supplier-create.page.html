@@ -5,13 +5,18 @@
       <ion-back-button defaultHref="/fornitori"></ion-back-button>
     </ion-buttons>
 
-    <ion-title>supplierCreate</ion-title>
+    <ion-title>{{title}}</ion-title>
 
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+
+  <div class="spinner" [style.display]="showSpinner ? 'block' : 'none'">
+    <div class="dot1"></div>
+    <div class="dot2"></div>
+  </div>
   <app-dynamic-form [questions]="questions" (interactiveSubmit)="filter($event)" (singleSubmit)="submit($event)"></app-dynamic-form>
 
   <ion-buttons slot="start">

@@ -69,7 +69,7 @@ export class FornitoriPage implements OnInit, OnChanges {
     this.geo.getPosition().then(coords => {
       this.position = { latitude: coords.coords.latitude, longitude: coords.coords.longitude };
     });
-    this.suppliers.getEntiesList().on('value', eventSuppliersListSnapshot => {
+    this.suppliers.getEntitiesList().on('value', eventSuppliersListSnapshot => {
       this.SuppliersList = [];
       eventSuppliersListSnapshot.forEach(snap => {
         const supplier = new SupplierModel();

@@ -29,7 +29,7 @@ export class SuppliersService implements ItemServiceInterface {
 
   }
 
-  getEntiesList(): firebase.database.Reference {
+  getEntitiesList(): firebase.database.Reference {
     return this.suppliersListRef;
   }
 
