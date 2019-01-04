@@ -9,7 +9,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class InfoPage implements OnInit {
 
-  constructor(public info: InfoService, public alertCtrl: AlertController) { }
+  constructor(public info: InfoService, ) { }
 
   scan() {
     console.log('click');

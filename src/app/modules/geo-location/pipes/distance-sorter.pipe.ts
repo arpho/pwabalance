@@ -20,7 +20,7 @@ export class DistanceSorterPipe implements PipeTransform {
   transform(value: [any], location: { longitude: number, latitude: number }) { // uso any per renderlo riutilizzabile
     if (value && location) {
       return value.sort((a: any, b: { longitude: number, latitude: number }) => {
-        return this.distance(a.latitudine, a.longitudine, location.latitude, location.longitude) -
+        return this.distance(a.latitude, a.longitude, location.latitude, location.longitude) -
           this.distance(b.latitude, b.longitude, location.latitude, location.longitude);
       });
     } else {
