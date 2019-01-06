@@ -14,7 +14,7 @@ import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-supplier-update',
   templateUrl: '../supplier-create/supplier-create.page.html',
-  styleUrls: ['./supplier-update.page.scss'],
+  styleUrls: ['../supplier-create/supplier-create.page.scss'],
 })
 export class SupplierUpdatePage implements OnInit {
   public questions: any;

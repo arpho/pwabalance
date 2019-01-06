@@ -8,6 +8,6 @@
 </ion-header>
 
 <ion-content padding>
-  <item-field-filter [label]="filterLabel" (doFilter)="filterFunction=searchFunctionFactory($event)"></item-field-filter>
+  <!--item-field-filter [label]="filterLabel" (doFilter)="filterFunction=searchFunctionFactory($event)"></item-field-filter-->
   <my-items-list [items_list]="CategoriesList" [service]="categories" [filterFunction]="filterFunction"></my-items-list>
 </ion-content>
