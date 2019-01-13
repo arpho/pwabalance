@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GeoServiceService } from './geo-service';
+import { GeoService } from './geo-service';
 
 describe('GeoServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: GeoServiceService = TestBed.get(GeoServiceService);
+    const service: GeoService = TestBed.get(GeoService);
     expect(service).toBeTruthy();
   });
 });

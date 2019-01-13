@@ -134,15 +134,32 @@ export class SupplierUpdatePage implements OnInit {
 
 
   filter(ev: {}) {
+    console.log(ev)
   }
 
-  async submit(ev: any) {
+  async  submit(ev: {
+    nome: string,
+    note: string,
+    title?: string,
+    fidelity_card?: string,
+    location: {
+      address: string,
+      latitude: number,
+      longitude: number,
+    }
+    altitude: string,
+    key: string,
+    ecommerce: boolean,
+
+  }) {
     this.showSpinner = true;
     // console.log('submitted', ev);
     const supplier = new SupplierModel(ev);
     console.log('fornitore non modificato', this.currentSupplier);
     console.log('location', ev['location']);
-    supplier.address = ev['location'];
+    supplier.address = ev['location']['address'] || supplier.address;
+    supplier.longitude = ev['location']['longitude'] || supplier.longitude;
+    supplier.latitude = ev['location']['latitude'] || supplier.latitude;
     supplier.key = this.currentSupplier.key;
     console.log('nuovo fornitore', supplier);
     console.log('fornitore serialized', supplier.serialize());

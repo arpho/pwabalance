@@ -53,6 +53,7 @@ export class SupplierModel implements ItemModelInterface, FirebaseObject {
         service.getItem(key).on('value', sup => {
 
             const loader = ([key, value]) => { this[key] = value; };
+            console.log(sup.val())
             Object.entries(sup.val()).forEach(loader);
             this.key = key;
             // retro compatibilità

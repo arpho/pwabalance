@@ -3,16 +3,16 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PageItemComponent } from './page-item.component';
 
-describe('PageItemCompnent', () => {
-  let component: PageItemCompnent;
-  let fixture: ComponentFixture<PageItemCompnent>;
+describe('PageItemComponent', () => {
+  let component: PageItemComponent;
+  let fixture: ComponentFixture<PageItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageItemComponent ],
+      declarations: [PageItemComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
