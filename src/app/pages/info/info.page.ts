@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoService } from 'src/app/services/info/info.service';
 import { AlertController } from '@ionic/angular';
-import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -10,10 +9,10 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./info.page.scss'],
 })
 export class InfoPage implements OnInit {
-  version: string
+  version: string;
 
   constructor(public info: InfoService,
-    public http: HttpClient) {
+  ) {
 
   }
 
@@ -22,7 +21,7 @@ export class InfoPage implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get('assets/angular.json').subscribe(data => {
+    this.info.getVersion().subscribe(data => {
       this.version = data['version'];
     });
   }

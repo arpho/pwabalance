@@ -15,7 +15,7 @@ export class QuestionFormComponent implements OnInit {
 
   ngOnInit() {
     this.value = this.question.value;
-    console.log('nel question componenr', this.value)
+    console.log('nel question componenr', this.value);
   }
   get isValid() { return this.form.controls[this.question.key].valid; }
   get getValue() {

@@ -28,7 +28,7 @@ export class GeoService {
     return this.http.get(url);
   }
   /**
-   *set a timeout 
+   *set a timeout
    @param t: number timeout in millisecs
    @boolean: returns true when   the timeout is set, otherwise return false
    *

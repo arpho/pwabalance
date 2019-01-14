@@ -10,7 +10,7 @@ describe('ListPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListPage ],
+      declarations: [ListPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
@@ -26,10 +26,10 @@ describe('ListPage', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a list of 10 elements', () => {
+  it('should have a list of 6 elements', () => {
     listPage = fixture.nativeElement;
     const items = listPage.querySelectorAll('ion-item');
-    expect(items.length).toEqual(10);
+    expect(items.length).toEqual(12);
   });
 
 });

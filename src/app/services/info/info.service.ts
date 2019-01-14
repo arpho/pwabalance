@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -6,12 +7,13 @@ import { Injectable } from '@angular/core';
 })
 export class InfoService {
 
-  constructor() { }
+  constructor(public http: HttpClient) { }
 
-  async fileRead(path: string) {
 
-    console.log('fghh');
+
+
+  getVersion() {
+    return this.http.get('assets/package.json');
   }
 }
-
 
