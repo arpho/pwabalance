@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CategoriesService } from '../../services/categories/categories.service';
 import { CategoryModel } from 'src/app/models/CategoryModel';
 import { ItemModelInterface } from 'src/app/modules/item/models/itemModelInterface';
+import { TextboxQuestion } from 'src/app/modules/dynamic-form/models/question-textbox';
 
 @Component({
   selector: 'app-categorie',
@@ -12,11 +13,37 @@ export class CategoriePage implements OnInit, OnChanges {
   public CategoriesList: Array<CategoryModel>;
   public filterLabel: String = 'Categorie';
   public filterString: string;
+  filterFields: any;
   public filterFunction: (item: ItemModelInterface) => Boolean;
 
-  constructor(public categories: CategoriesService) { }
+  constructor(public categories: CategoriesService) {
+    this.filterFields = [
+      new TextboxQuestion({
+        key: 'title',
+        label: 'Filtra per categoria',
+        // value: 'Bombasto',
+        order: 1
+      }),
+    ];
+  }
+  filter(event) {
+    console.log(event)
+    const filterTitle = event.title ?
+      (item: ItemModelInterface) => item.title.toLowerCase().indexOf(event.title.toLowerCase()) !== -1 :
+      (item: ItemModelInterface) => true; // se non filtro il campo title prendo tutto
+    const filterNote = event.note ? (item: ItemModelInterface) => item.note.toLowerCase().indexOf(event.note.toLowerCase()) !== -1 :
+      (item: ItemModelInterface) => true;
+    const out = (item: ItemModelInterface) => filterNote(item) && filterTitle(item);
+    return out;
+  }
+
+
+
+
   ngOnChanges(changes: SimpleChanges) {
   }
+
+
 
   searchFunctionFactory(v): (item: ItemModelInterface) => Boolean {
     const out = (item: ItemModelInterface) => item.title.toLowerCase().indexOf(v.data.toLowerCase()) !== -1;

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InputGeolocationComponent } from './input-geolocation.component';
+import { IonicModule } from '@ionic/angular';
 
 describe('InputGeolocationComponent', () => {
   let component: InputGeolocationComponent;
@@ -8,9 +9,11 @@ describe('InputGeolocationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputGeolocationComponent ]
+      declarations: [InputGeolocationComponent],
+      imports: [IonicModule]
+
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

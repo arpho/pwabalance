@@ -38,8 +38,8 @@ describe('AppComponent', () => {
 
   it('should initialize the app', async () => {
     TestBed.createComponent(AppComponent);
-    expect(platformSpy.ready).toHaveBeenCalled();
     await platformReadySpy;
+    expect(platformSpy.ready).toHaveBeenCalled();
     expect(statusBarSpy.styleDefault).toHaveBeenCalled();
     expect(splashScreenSpy.hide).toHaveBeenCalled();
   });
@@ -50,10 +50,10 @@ describe('AppComponent', () => {
     await fixture.detectChanges();
     const app = fixture.nativeElement;
     const menuItems = app.querySelectorAll('ion-item');
-    // expect(menuItems.length).toEqual(2);
+    expect(menuItems.length).toEqual(7);
     expect(menuItems[0].getAttribute('ng-reflect-router-link')).toEqual('/home');
     expect(menuItems[1].getAttribute('ng-reflect-router-link')).toEqual('/categorie');
-    expect(menuItems[2].getAttribute('ng-reflect-router-link')).toEqual('/pagmenti');
+    expect(menuItems[2].getAttribute('ng-reflect-router-link')).toEqual('/pagamenti');
     expect(menuItems[3].getAttribute('ng-reflect-router-link')).toEqual('/fornitori');
   });
 

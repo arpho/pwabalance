@@ -10,6 +10,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class InfoPage implements OnInit {
   version: string;
+  appName: string;
+  email: string;
 
   constructor(public info: InfoService,
   ) {
@@ -21,8 +23,10 @@ export class InfoPage implements OnInit {
   }
 
   ngOnInit() {
-    this.info.getVersion().subscribe(data => {
+    this.info.getPackage().subscribe(data => {
       this.version = data['version'];
+      this.appName = data['name'];
+      this.email = data['email'];
     });
   }
 

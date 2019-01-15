@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { QuestionFormComponent } from './question-form-component.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { GeoLocationModule } from 'src/app/modules/geo-location/geo-location.module';
 
 describe('QuestionFormComponent', () => {
   let component: QuestionFormComponent;
@@ -10,7 +12,7 @@ describe('QuestionFormComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [QuestionFormComponent],
-      imports: [ReactiveFormsModule]
+      imports: [ReactiveFormsModule, IonicModule, GeoLocationModule]
     })
       .compileComponents();
   }));

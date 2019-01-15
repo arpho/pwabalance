@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DynamicFormComponent } from './dynamic-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { QuestionFormComponent } from '../question-form-component/question-form-component.component';
+import { IonicModule } from '@ionic/angular';
+import { GeoLocationModule } from 'src/app/modules/geo-location/geo-location.module';
 
 describe('DynamicFormComponent', () => {
   let component: DynamicFormComponent;
@@ -8,9 +12,10 @@ describe('DynamicFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DynamicFormComponent ]
+      declarations: [DynamicFormComponent, QuestionFormComponent],
+      imports: [ReactiveFormsModule, IonicModule, GeoLocationModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -54,8 +54,10 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
-
-    firebase.initializeApp(configs.firebase);
+    this.initializeApp();
+    if (!firebase.apps.length) {
+      firebase.initializeApp(configs.firebase);
+    }
   }
 
   initializeApp() {

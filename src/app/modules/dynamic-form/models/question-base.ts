@@ -16,7 +16,7 @@ export class QuestionBase<T> {
         labelTrue?: String,
         labelFalse?: String,
     } = {}) {
-        this.value = options.value;
+        this.value = options['value'];
         this.key = options.key || '';
         this.label = options.label || '';
         this.required = !!options.required;

@@ -8,6 +8,6 @@
 </ion-header>
 
 <ion-content padding>
-  <!--item-field-filter [label]="filterLabel" (doFilter)="filterFunction=searchFunctionFactory($event)"></item-field-filter-->
+  <app-dynamic-form [questions]="filterFields" (interactiveSubmit)="filterFunction=filter($event)"></app-dynamic-form>
   <my-items-list [items_list]="CategoriesList" [service]="categories" [filterFunction]="filterFunction"></my-items-list>
 </ion-content>

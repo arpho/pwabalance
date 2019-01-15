@@ -5,7 +5,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CategoriePage } from './categorie.page';
 import { ItemModule } from '../../modules/item/item.module';
-import { ItemFieldFilterComponent } from '../../modules/item/components/item-field-filter/item-field-filter.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DynamicFormModule } from 'src/app/modules/dynamic-form/dynamic-form.module';
 

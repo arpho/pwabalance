@@ -4,7 +4,7 @@ import { CategoryModel } from 'src/app/models/CategoryModel';
 import { ItemModelInterface } from 'src/app/modules/item/models/itemModelInterface';
 import { SupplierModel } from 'src/app/models/supplierModel';
 import { Router } from '@angular/router';
-import { GeoService } from '../../modules/geo-location/services/geo-service'
+import { GeoService } from '../../modules/geo-location/services/geo-service';
 import { TextboxQuestion } from 'src/app/modules/dynamic-form/models/question-textbox';
 import { SwitchQuestion } from 'src/app/modules/item/models/question-switch';
 

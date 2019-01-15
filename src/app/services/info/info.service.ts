@@ -12,7 +12,7 @@ export class InfoService {
 
 
 
-  getVersion() {
+  getPackage() {
     return this.http.get('assets/package.json');
   }
 }

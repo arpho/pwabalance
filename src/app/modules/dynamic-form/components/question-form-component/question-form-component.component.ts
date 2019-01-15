@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy, ɵConsole } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import { QuestionBase } from '../../models/question-base';
 
@@ -14,8 +14,11 @@ export class QuestionFormComponent implements OnInit {
   @Input() form: FormGroup;
 
   ngOnInit() {
-    this.value = this.question.value;
-    console.log('nel question componenr', this.value);
+    this.value = (this.question) ? this.question.value : undefined;
+    this.form = (this.form) ? this.form : new FormGroup({ // I need an instance of formgroup for run the tests
+      name: new FormControl(),
+      age: new FormControl('20')
+    });
   }
   get isValid() { return this.form.controls[this.question.key].valid; }
   get getValue() {

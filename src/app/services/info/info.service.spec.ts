@@ -8,6 +8,6 @@ describe('InfoService', () => {
   it('should be created', () => {
     const service: InfoService = TestBed.get(InfoService);
     expect(service).toBeTruthy();
-    expect(service.getVersion()).toBeTruthy();
+    expect(service.getPackage()).toBeTruthy();
   });
 });

@@ -4,7 +4,6 @@ import { IonicModule } from '@ionic/angular';
 import { ItemComponent } from './components/item/item.component';
 import { ItemsListComponent } from './components/items-list/items-list.component';
 import { FilterItemsPipe } from './pipes/filter-items.pipe';
-import { ItemFieldFilterComponent } from './components/item-field-filter/item-field-filter.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageItemComponent } from './components/page-item/page-item.component';
 import { PageItemsListComponent } from './components/page-items-list/page-items-list.page';
@@ -13,7 +12,6 @@ import { PageItemsListComponent } from './components/page-items-list/page-items-
   declarations: [
     ItemComponent,
     ItemsListComponent,
-    ItemFieldFilterComponent,
     FilterItemsPipe,
     PageItemComponent,
     PageItemsListComponent,
@@ -26,7 +24,6 @@ import { PageItemsListComponent } from './components/page-items-list/page-items-
   exports: [
     ItemComponent,
     ItemsListComponent,
-    ItemFieldFilterComponent,
     PageItemComponent,
     PageItemsListComponent,
   ]

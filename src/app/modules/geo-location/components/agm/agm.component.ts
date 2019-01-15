@@ -13,14 +13,11 @@ export class AgmComponent implements OnInit {
   lat = 37.7456284;
   lng = 15.146945299999999;
   locationChoosen = false;
-  /**
-latitude
-:
 
-longitude
-:
-15.146945299999999
- */
+  latitude: 0;
+
+  longitude: 15.146945299999999;
+
 
 
   constructor(public agm: AgmCoreModule) {
