@@ -27,7 +27,6 @@ export class CategoriePage implements OnInit, OnChanges {
     ];
   }
   filter(event) {
-    console.log(event)
     const filterTitle = event.title ?
       (item: ItemModelInterface) => item.title.toLowerCase().indexOf(event.title.toLowerCase()) !== -1 :
       (item: ItemModelInterface) => true; // se non filtro il campo title prendo tutto
@@ -51,14 +50,16 @@ export class CategoriePage implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.categories.getEntitiesList().on('value', eventCategoriesListSnapshot => {
-      this.CategoriesList = [];
-      eventCategoriesListSnapshot.forEach(snap => {
-        const category = new CategoryModel();
-        category.load(snap.key, this.categories);
-        this.CategoriesList.push(category);
+    if (this.categories.getEntitiesList()) {
+      this.categories.getEntitiesList().on('value', eventCategoriesListSnapshot => {
+        this.CategoriesList = [];
+        eventCategoriesListSnapshot.forEach(snap => {
+          const category = new CategoryModel();
+          category.load(snap.key, this.categories);
+          this.CategoriesList.push(category);
+        });
       });
-    });
+    }
   }
   ionViewDidLoad() {
     console.log('loading categories');
