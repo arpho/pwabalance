@@ -16,7 +16,7 @@ export class QuestionFormComponent implements OnInit {
   ngOnInit() {
     this.value = (this.question) ? this.question.value : undefined;
     this.form = (this.form) ? this.form : new FormGroup({ // I need an instance of formgroup for run the tests
-      name: new FormControl(),
+      name: new FormControl('turiddu'),
       age: new FormControl('20')
     });
   }

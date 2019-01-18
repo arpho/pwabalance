@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { ItemComponent } from './components/item/item.component';
+import { MyItemModule } from './components/item/item.component';
 import { ItemsListComponent } from './components/items-list/items-list.component';
 import { FilterItemsPipe } from './pipes/filter-items.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -10,7 +10,7 @@ import { PageItemsListComponent } from './components/page-items-list/page-items-
 
 @NgModule({
   declarations: [
-    ItemComponent,
+    MyItemModule,
     ItemsListComponent,
     FilterItemsPipe,
     PageItemComponent,
@@ -22,7 +22,7 @@ import { PageItemsListComponent } from './components/page-items-list/page-items-
     ReactiveFormsModule
   ],
   exports: [
-    ItemComponent,
+    MyItemModule,
     ItemsListComponent,
     PageItemComponent,
     PageItemsListComponent,

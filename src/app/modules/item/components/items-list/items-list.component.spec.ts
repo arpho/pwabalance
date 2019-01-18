@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { ItemsListComponent } from './items-list.component';
+import { FilterItemsPipe } from '../../pipes/filter-items.pipe';
+import { MyItemModule } from '../item/item.component';
 
 describe('ItemsListComponent', () => {
   let component: ItemsListComponent;
@@ -9,10 +11,10 @@ describe('ItemsListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ItemsListComponent ],
+      declarations: [ItemsListComponent, FilterItemsPipe, MyItemModule],
       imports: [IonicModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

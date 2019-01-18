@@ -8,7 +8,7 @@ import { ItemModelInterface } from '../../models/itemModelInterface';
   styleUrls: ['./item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ItemComponent implements OnInit, OnChanges {
+export class MyItemModule implements OnInit, OnChanges {
   @Input() Item: ItemModelInterface;
   constructor(private alertCtrl: AlertController) { }
 

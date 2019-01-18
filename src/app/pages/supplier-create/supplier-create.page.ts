@@ -28,7 +28,7 @@ export class SupplierCreatePage implements OnInit {
 
 
     this.initialLocation = new Coordinates({
-      latitude: 0, // I have to set a value for the form 
+      latitude: 0, // I have to set a value for the form
       longitude: 0, //  means no locatian set
       address: 'to be implemented'
     });

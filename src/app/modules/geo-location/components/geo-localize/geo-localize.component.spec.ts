@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, NavController } from '@ionic/angular';
 import { GeoLocalizeComponent } from './geo-localize.component';
 import { AgmCoreModule } from '@agm/core';
 
@@ -10,7 +10,7 @@ describe('GeoLocalizeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [GeoLocalizeComponent],
-      imports: [IonicModule, AgmCoreModule]
+      imports: [IonicModule, AgmCoreModule, NavController]
     })
       .compileComponents();
   }));

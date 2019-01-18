@@ -1,22 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { FilterItemsPipe } from '../../pipes/filter-items.pipe';
-import { ItemComponent } from './item.component';
+import { MyItemModule } from './item.component';
+import { ItemModule } from '../../item.module';
 
-describe('ItemComponent', () => {
-  let component: ItemComponent;
-  let fixture: ComponentFixture<ItemComponent>;
+describe('MyItemModule', () => {
+  let component: MyItemModule;
+  let fixture: ComponentFixture<MyItemModule>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ItemComponent, FilterItemsPipe],
-      imports: [IonicModule]
+      declarations: [MyItemModule, FilterItemsPipe],
+      imports: [IonicModule, ItemModule]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ItemComponent);
+    fixture = TestBed.createComponent(MyItemModule);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

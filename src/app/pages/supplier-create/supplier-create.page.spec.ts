@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SupplierCreatePage } from './supplier-create.page';
+import { Location } from '@angular/common';
 
 describe('SupplierCreatePage', () => {
   let component: SupplierCreatePage;
@@ -9,10 +10,10 @@ describe('SupplierCreatePage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SupplierCreatePage ],
+      declarations: [SupplierCreatePage, Location],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

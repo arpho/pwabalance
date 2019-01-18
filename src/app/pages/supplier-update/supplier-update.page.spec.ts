@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SupplierUpdatePage } from './supplier-update.page';
+import { IonicModule } from '@ionic/angular';
 
 describe('SupplierUpdatePage', () => {
   let component: SupplierUpdatePage;
@@ -9,10 +10,11 @@ describe('SupplierUpdatePage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SupplierUpdatePage ],
+      declarations: [SupplierUpdatePage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [IonicModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
