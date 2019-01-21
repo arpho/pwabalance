@@ -21,7 +21,9 @@ export class ItemsListComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.filterFunction = (v: ItemModelInterface) => true;
-    this.dummyItem = this.service.getDummyItem();
+    if (this.service) {
+      this.dummyItem = this.service.getDummyItem();
+    }
   }
 
   async create() {

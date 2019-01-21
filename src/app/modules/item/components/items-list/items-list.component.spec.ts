@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, AlertController } from '@ionic/angular';
 
 import { ItemsListComponent } from './items-list.component';
 import { FilterItemsPipe } from '../../pipes/filter-items.pipe';
@@ -12,7 +12,8 @@ describe('ItemsListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ItemsListComponent, FilterItemsPipe, MyItemModule],
-      imports: [IonicModule]
+      imports: [IonicModule],
+      providers: [AlertController]
     })
       .compileComponents();
   }));

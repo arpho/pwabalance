@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SupplierUpdatePage } from './supplier-update.page';
 import { IonicModule } from '@ionic/angular';
+import { RouterTestingModule } from '@angular/router/testing';
+import { SuppliersService } from 'src/app/services/suplliers/suppliers.service';
 
 describe('SupplierUpdatePage', () => {
   let component: SupplierUpdatePage;
@@ -12,7 +14,7 @@ describe('SupplierUpdatePage', () => {
     TestBed.configureTestingModule({
       declarations: [SupplierUpdatePage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [IonicModule]
+      imports: [IonicModule.forRoot(), RouterTestingModule]
     })
       .compileComponents();
   }));

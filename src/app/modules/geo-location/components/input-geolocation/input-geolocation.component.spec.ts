@@ -1,8 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InputGeolocationComponent } from './input-geolocation.component';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, NavController } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
+import { Location, LocationStrategy, PathLocationStrategy, APP_BASE_HREF } from '@angular/common';
 
 describe('InputGeolocationComponent', () => {
   let component: InputGeolocationComponent;
@@ -11,7 +12,9 @@ describe('InputGeolocationComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [InputGeolocationComponent],
-      imports: [IonicModule, HttpClientModule]
+      imports: [IonicModule.forRoot(), HttpClientModule],
+      providers: [NavController, Location, { provide: LocationStrategy, useClass: PathLocationStrategy },
+        { provide: APP_BASE_HREF, useValue: '/my/app' }]
 
     })
       .compileComponents();

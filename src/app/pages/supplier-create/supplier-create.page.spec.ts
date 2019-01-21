@@ -10,7 +10,7 @@ describe('SupplierCreatePage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SupplierCreatePage, Location],
+      declarations: [SupplierCreatePage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
