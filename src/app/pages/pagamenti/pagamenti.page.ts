@@ -48,14 +48,17 @@ export class PagamentiPage implements OnInit {
   }
 
   ngOnInit() {
-    this.payments.getEntitiesList().on('value', eventCategoriesListSnapshot => {
-      this.paymentsList = [];
-      eventCategoriesListSnapshot.forEach(snap => {
-        const payment = new PaymentsModel();
-        payment.load(snap.key, this.payments);
-        this.paymentsList.push(payment);
+    if (this.payments.getEntitiesList()) {
+      this.payments.getEntitiesList().on('value', eventCategoriesListSnapshot => {
+
+        this.paymentsList = [];
+        eventCategoriesListSnapshot.forEach(snap => {
+          const payment = new PaymentsModel();
+          payment.load(snap.key, this.payments);
+          this.paymentsList.push(payment);
+        });
       });
-    });
+    }
   }
 
 }

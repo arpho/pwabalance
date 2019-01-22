@@ -24,12 +24,14 @@ export class ProfilePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.profileService.getUserProfile().on('value', userProfileSnapshot => {
-      this.userProfile = userProfileSnapshot.val();
-      console.log(this.userProfile);
-      console.log(userProfileSnapshot.val().birthDate);
-      this.birthDate = new Date(userProfileSnapshot.val().birthDate).toISOString();
-    });
+    if (this.profileService.getUserProfile()) {
+      this.profileService.getUserProfile().on('value', userProfileSnapshot => {
+        this.userProfile = userProfileSnapshot.val();
+        console.log(this.userProfile);
+        console.log(userProfileSnapshot.val().birthDate);
+        this.birthDate = new Date(userProfileSnapshot.val().birthDate).toISOString();
+      });
+    }
   }
 
   logOut(): void {
@@ -68,34 +70,33 @@ export class ProfilePage implements OnInit {
     await alert.present();
   }
 
-extract_date_from_data(d){
-  return d.split('T')[0].split('-');
-}
-changedDate(d)
-{
-  console.log(d)
-}
-
-updateDOB(birthDate: any): void {
-  console.log(birthDate);
-  if (birthDate === undefined) {
-    return;
-  } else if (
-    birthDate.year === undefined ||
-    birthDate.month === undefined ||
-    birthDate.day === undefined
-  ) {
-    return;
+  extract_date_from_data(d) {
+    return d.split('T')[0].split('-');
   }
-  const dateOfBirth: Date = new Date(
-    birthDate.year.value,
-    birthDate.month.value - 1,
-    birthDate.day.value
-  );
-  console.log(dateOfBirth);
-  this.profileService.updateDOB(String(dateOfBirth));
+  changedDate(d) {
+    console.log(d)
+  }
 
-}
+  updateDOB(birthDate: any): void {
+    console.log(birthDate);
+    if (birthDate === undefined) {
+      return;
+    } else if (
+      birthDate.year === undefined ||
+      birthDate.month === undefined ||
+      birthDate.day === undefined
+    ) {
+      return;
+    }
+    const dateOfBirth: Date = new Date(
+      birthDate.year.value,
+      birthDate.month.value - 1,
+      birthDate.day.value
+    );
+    console.log(dateOfBirth);
+    this.profileService.updateDOB(String(dateOfBirth));
+
+  }
 
   async updateEmail(): Promise<void> {
     const alert = await this.alertCtrl.create({
