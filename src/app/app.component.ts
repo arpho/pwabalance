@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { configs } from './configs/configs';
 import * as firebase from 'firebase/app';
+import { InfoService } from './services/info/info.service';
 
 @Component({
   selector: 'app-root',
@@ -52,11 +53,16 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private info: InfoService
   ) {
     this.initializeApp();
     if (!firebase.apps.length) {
       firebase.initializeApp(configs.firebase);
+    }
+    if (this.info.areThereNews()) {
+      console.log('update');
+      // top go to info page
     }
   }
 

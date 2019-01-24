@@ -18,6 +18,7 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { GeoLocationModule } from './modules/geo-location/geo-location.module';
 import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
   entryComponents: [],
   imports: [
     MatButtonModule,
+    IonicStorageModule.forRoot(),
     MatCheckboxModule,
     CommonModule,
     BrowserModule,
