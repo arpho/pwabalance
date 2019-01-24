@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ResetPasswordPage } from './reset-password.page';
-import { AlertController } from '@ionic/angular';
+import { AlertController, IonicModule, NavController } from '@ionic/angular';
 
 describe('ResetPasswordPage', () => {
   let component: ResetPasswordPage;
@@ -14,8 +14,8 @@ describe('ResetPasswordPage', () => {
     TestBed.configureTestingModule({
       declarations: [ResetPasswordPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [ReactiveFormsModule, RouterModule, RouterTestingModule],
-      providers: [AlertController]
+      imports: [ReactiveFormsModule, RouterModule, RouterTestingModule, IonicModule.forRoot()],
+      providers: [AlertController, NavController]
 
     })
       .compileComponents();

@@ -14,7 +14,8 @@ describe('SupplierUpdatePage', () => {
     TestBed.configureTestingModule({
       declarations: [SupplierUpdatePage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [IonicModule.forRoot(), RouterTestingModule]
+      imports: [IonicModule.forRoot(), RouterTestingModule],
+      providers: [SuppliersService]
     })
       .compileComponents();
   }));

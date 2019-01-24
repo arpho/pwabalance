@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LoginPage } from './login.page';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, IonicModule } from '@ionic/angular';
 
 describe('LoginPage', () => {
   let component: LoginPage;
@@ -14,7 +14,7 @@ describe('LoginPage', () => {
     TestBed.configureTestingModule({
       declarations: [LoginPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [ReactiveFormsModule, RouterModule, RouterTestingModule],
+      imports: [IonicModule.forRoot(), ReactiveFormsModule, RouterModule, RouterTestingModule],
       providers: [LoadingController, AlertController]
     })
       .compileComponents();

@@ -35,7 +35,7 @@ export class SuppliersService implements ItemServiceInterface {
 
 
   getItem(prId: string): firebase.database.Reference {
-    return this.suppliersListRef.child(prId);
+    return (this.suppliersListRef) ? this.suppliersListRef.child(prId) : undefined;
   }
 
   updateItem(item: ItemModelInterface) {

@@ -50,18 +50,20 @@ export class SupplierModel implements ItemModelInterface, FirebaseObject {
 
 
     load(key, service) {
-        service.getItem(key).on('value', sup => {
+        if (service.getItem(key)) {
+            service.getItem(key).on('value', sup => {
 
-            const loader = ([key, value]) => { this[key] = value; };
-            Object.entries(sup.val()).forEach(loader);
-            this.key = key;
-            // retro compatibilità
-            this.title = this.title || this.nome;
-            this.latitude = Number(this.latitude || this.latitudine);
-            this.longitude = Number(this.longitude || this.longitudine);
-            this.address = this.address || this.indirizzo;
-            this.ecommerce = this.ecommerce || this.onLine;
-        });
+                const loader = ([Key, value]) => { this[Key] = value; };
+                Object.entries(sup.val()).forEach(loader);
+                this.key = key;
+                // retro compatibilità
+                this.title = this.title || this.nome;
+                this.latitude = Number(this.latitude || this.latitudine);
+                this.longitude = Number(this.longitude || this.longitudine);
+                this.address = this.address || this.indirizzo;
+                this.ecommerce = this.ecommerce || this.onLine;
+            });
+        }
     }
 
     getFilterParams() {
