@@ -5,7 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { GeoLocationModule } from 'src/app/modules/geo-location/geo-location.module';
 import { CommonModule } from '@angular/common';
-import { AppModule } from 'src/app/app.module';
 
 describe('QuestionFormComponent', () => {
   let component: QuestionFormComponent;
@@ -13,8 +12,8 @@ describe('QuestionFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [],
-      imports: [ReactiveFormsModule, CommonModule, IonicModule.forRoot(), GeoLocationModule, AppModule]
+      declarations: [QuestionFormComponent],
+      imports: [ReactiveFormsModule, CommonModule, IonicModule.forRoot(), GeoLocationModule]
     })
       .compileComponents();
   }));

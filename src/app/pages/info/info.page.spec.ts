@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InfoPage } from './info.page';
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 describe('InfoPage', () => {
   let component: InfoPage;
@@ -12,7 +13,7 @@ describe('InfoPage', () => {
     TestBed.configureTestingModule({
       declarations: [InfoPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [HttpClientModule]
+      imports: [HttpClientModule, IonicStorageModule.forRoot()]
     })
       .compileComponents();
   }));

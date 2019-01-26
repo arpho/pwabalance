@@ -13,31 +13,33 @@ export class InfoService {
     public storage: Storage) {
     this.getPackage().subscribe(data => {
       this.actualVersion = data['version'];
+      console.log('versione', this.actualVersion);
 
     });
-    console.log('versione', this.actualVersion);
   }
 
   version2Number(version) {
-    console.log('converting', version);
-    const splittedVersion = version.split('.');
-    const Version = Number(splittedVersion[0]) +
-      Number(splittedVersion[1]) / 10 +
-      Number(splittedVersion[2]) / 100 +
-      Number(splittedVersion[3]) / 1000;
-    return Version;
+    return (version) ? version.split('.').reduce((acc, v, index) => acc + Number(v) / Math.pow(10, index), 0) : 0;
   }
 
 
   getPackage() {
     return this.http.get('assets/package.json');
   }
+  async setActualVersion(version: string = this.actualVersion) {
+
+    return this.storage.set('version', version);
+  }
   async areThereNews() {
     const previous_version = await this.storage.get('version');
-    console.log('prev version', previous_version);
-    console.log('actual ver', this.version2Number(this.actualVersion));
+    if (!previous_version) {
+      return 1;
+    }
+    if (this.version2Number(previous_version) < this.version2Number(this.actualVersion)) {
+      return 2;
+    }
 
-    return (!previous_version) || this.version2Number(this.actualVersion) > this.version2Number(previous_version);
+    return 0;
   }
 
 }
