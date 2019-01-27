@@ -19,6 +19,7 @@ import { GeoLocationModule } from './modules/geo-location/geo-location.module';
 import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { IonicStorageModule } from '@ionic/storage';
     BrowserAnimationsModule
   ],
   providers: [
+    BarcodeScanner,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

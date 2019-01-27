@@ -4,6 +4,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { InfoPage } from './info.page';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 
 describe('InfoPage', () => {
   let component: InfoPage;
@@ -13,7 +14,8 @@ describe('InfoPage', () => {
     TestBed.configureTestingModule({
       declarations: [InfoPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [HttpClientModule, IonicStorageModule.forRoot()]
+      imports: [HttpClientModule, IonicStorageModule.forRoot()],
+      providers: [BarcodeScanner]
     })
       .compileComponents();
   }));

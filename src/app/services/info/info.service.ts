@@ -13,7 +13,6 @@ export class InfoService {
     public storage: Storage) {
     this.getPackage().subscribe(data => {
       this.actualVersion = data['version'];
-      console.log('versione', this.actualVersion);
 
     });
   }

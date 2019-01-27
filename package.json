@@ -1,6 +1,6 @@
 {
   "name": "pwaBalance",
-  "version": "0.9.3.2",
+  "version": "0.9.4.0",
   "author": "Giuseppe D'Amico",
   "features": [
     "gestione forme di pagamento",
@@ -9,7 +9,7 @@
     "gestione acquisti in progress"
   ],
   "newFeatures": [
-    "visualizzare info"
+    "installed barcode Scanner"
   ],
   "email": "arphosolutions@gmail.com",
   "scripts": {
@@ -37,7 +37,7 @@
     "@angular/service-worker": "~7.0.0",
     "@capacitor/cli": "^1.0.0-beta.13",
     "@capacitor/core": "^1.0.0-beta.13",
-    "@ionic-native/barcode-scanner": "^4.18.0",
+    "@ionic-native/barcode-scanner": "^5.0.0",
     "@ionic-native/core": "5.0.0-beta.21",
     "@ionic-native/file": "^4.18.0",
     "@ionic-native/splash-screen": "5.0.0-beta.21",
