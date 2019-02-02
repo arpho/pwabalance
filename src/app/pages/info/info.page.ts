@@ -13,6 +13,7 @@ export class InfoPage implements OnInit {
   version: string;
   appName: string;
   email: string;
+  error: string;
   message: string;
   features: Array<string> = [];
   newFeatures: Array<string> = [];
@@ -31,9 +32,9 @@ export class InfoPage implements OnInit {
     this.barcodeScanner.scan().then(barcodeData => {
       alert('Barcode data ' + JSON.stringify(barcodeData));
       this.scannedData = barcodeData;
-      console.log(barcodeData)
     }).catch(err => {
       console.log('Error', err);
+      this.error = err;
     });
   }
 

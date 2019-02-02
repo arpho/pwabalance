@@ -1,6 +1,6 @@
 {
   "name": "pwaBalance",
-  "version": "0.9.4.0",
+  "version": "0.9.4.2",
   "author": "Giuseppe D'Amico",
   "features": [
     "gestione forme di pagamento",
@@ -9,7 +9,8 @@
     "gestione acquisti in progress"
   ],
   "newFeatures": [
-    "installed barcode Scanner"
+    "installed barcode Scanner",
+    "synchronized capacitor"
   ],
   "email": "arphosolutions@gmail.com",
   "scripts": {
